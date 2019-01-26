@@ -12,7 +12,7 @@ export default {
     return {
       isSticky: false,
       wrapperHeight: "auto",
-      width:'auto'
+      width: "auto"
     };
   },
   props: {
@@ -24,81 +24,83 @@ export default {
   computed: {
     styles() {
       return {
-        position: this.isSticky ? 'fixed' : 'static',
-        top: this.isSticky ? this.distance + 'px' : "",
-        width:this.width
+        position: this.isSticky ? "fixed" : "static",
+        top: this.isSticky ? this.distance + "px" : "",
+        width: this.width
       };
     },
-    wrapperStyles(){
-        return {
-            height:this.wrapperHeight
-        }
+    wrapperStyles() {
+      return {
+        height: this.wrapperHeight
+      };
     }
   },
   mounted() {
-    this.width = this.$refs.sticky.getBoundingClientRect().width + 'px'
+    this.width = this.$refs.sticky.getBoundingClientRect().width + "px";
 
-    window.addEventListener('resize',()=>{
-        this.width = document.body.getBoundingClientRect().width + 'px'
-    })
-    window.addEventListener("scroll", () => {
-      var rectTop = this.$refs.wrapper.getBoundingClientRect().top;
-      if (rectTop < this.distance) {
-        this.isSticky = true;
-        console.log('滚过了')
-      } else {
-        this.isSticky = false;
-        console.log('没有滚过')
-      }
-    });
+    window.addEventListener("resize", this.resizeHandler);
+    window.addEventListener("scroll", this.scrollHandler);
     if (window.MutationObserver) {
-      var mutationObserver = new window.MutationObserver(function(mutations) {
-          console.log('mutations')
+      this.mutationObserver = new window.MutationObserver(function(mutations) {
+        console.log("mutations");
         if (
           mutations[0].addedNodes.length ||
           mutations[0].removedNodes.length
         ) {
-          this.updateHeight()
+          this.updateHeight();
         }
       });
-      mutationObserver.observe(this.$refs.sticky, {
+      this.mutationObserver.observe(this.$refs.sticky, {
         subtree: true,
         childList: true
       });
     } else {
-      if (window.addEventListener) {
-        this.$refs.sticky.addEventListener("DOMNodeInserted",()=>{
-            this.updateHeight()
-        });
-        this.$refs.sticky.addEventListener("DOMNodeRemoved",()=>{
-            this.updateHeight()
-        });
-      } else if (window.attachEvent) {
-        this.$refs.sticky.attachEvent("onDOMNodeInserted", ()=>{
-          this.updateHeight()
-        });
-        this.$refs.sticky.attachEvent("onDOMNodeRemoved", ()=>{
-          this.updateHeight()
-        });
-      }
+      this.$refs.sticky.addEventListener("DOMNodeInserted", this.domInsertedHandler);
+      this.$refs.sticky.addEventListener("DOMNodeRemoved", this.domNodeRemovedHandler);
     }
+  },
+  beforeDestroy(){
+      window.removeEventListener("resize", this.resizeHandler);
+      window.removeEventListener("scroll", this.scrollHandler);
+      this.mutationObserver = null
+
+      this.$refs.sticky.removeEventListener("DOMNodeInserted", this.domInsertedHandler);
+      this.$refs.sticky.removeEventListener("DOMNodeRemoved", this.domNodeRemovedHandler);
   },
   watch: {
     isSticky: function(newVal) {
       if (newVal) {
-        this.$emit('sticky-start')
-        this.updateHeight()
-      }
-      else{
-          this.$emit('sticky-end')
+        this.$emit("sticky-start");
+        this.updateHeight();
+      } else {
+        this.$emit("sticky-end");
       }
     }
   },
-  methods:{
-      updateHeight(){
-          this.wrapperHeight = getComputedStyle(this.$refs.sticky).height;
-          this.$emit('sticky-update')
+  methods: {
+    updateHeight() {
+      this.wrapperHeight = getComputedStyle(this.$refs.sticky).height;
+      this.$emit("sticky-update");
+    },
+    resizeHandler() {
+      this.width = document.body.getBoundingClientRect().width + "px";
+    },
+    scrollHandler() {
+      var rectTop = this.$refs.wrapper.getBoundingClientRect().top;
+      if (rectTop < this.distance) {
+        this.isSticky = true;
+        console.log("滚过了");
+      } else {
+        this.isSticky = false;
+        console.log("没有滚过");
       }
+    },
+    domInsertedHandler() {
+        this.updateHeight()
+    },
+    domNodeRemovedHandler(){
+        this.updateHeight()
+    }
   }
 };
 </script>
