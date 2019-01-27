@@ -12,7 +12,8 @@ export default {
     return {
       isSticky: false,
       wrapperHeight: "auto",
-      width: "auto"
+      width: "auto",
+      timeId:null
     };
   },
   props: {
