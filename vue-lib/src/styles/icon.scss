@@ -1,0 +1,187 @@
+// @import "common/var";
+
+@font-face {
+    font-family: 'ui-icons';
+    src: url('~@/static/fonts/ui-icons.woff') format('woff'), /* chrome, firefox */
+         url('~@/static/fonts/ui-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    font-weight: normal;
+    font-style: normal
+  }
+  
+  
+  [class^="ui-icon-"], [class*=" ui-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'ui-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: basuiine;
+    display: inline-block;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .ui-icon-info:before { content: "\e61a"; }
+  
+  .ui-icon-error:before { content: "\e62c"; }
+  
+  .ui-icon-success:before { content: "\e62d"; }
+  
+  .ui-icon-warning:before { content: "\e62e"; }
+  
+  .ui-icon-question:before { content: "\e634"; }
+  
+  .ui-icon-back:before { content: "\e606"; }
+  
+  .ui-icon-arrow-left:before { content: "\e600"; }
+  
+  .ui-icon-arrow-down:before { content: "\e603"; }
+  
+  .ui-icon-arrow-right:before { content: "\e604"; }
+  
+  .ui-icon-arrow-up:before { content: "\e605"; }
+  
+  .ui-icon-caret-left:before { content: "\e60a"; }
+  
+  .ui-icon-caret-bottom:before { content: "\e60b"; }
+  
+  .ui-icon-caret-top:before { content: "\e60c"; }
+  
+  .ui-icon-caret-right:before { content: "\e60e"; }
+  
+  .ui-icon-d-arrow-left:before { content: "\e610"; }
+  
+  .ui-icon-d-arrow-right:before { content: "\e613"; }
+  
+  .ui-icon-minus:before { content: "\e621"; }
+  
+  .ui-icon-plus:before { content: "\e62b"; }
+  
+  .ui-icon-remove:before { content: "\e635"; }
+  
+  .ui-icon-circle-plus:before { content: "\e601"; }
+  
+  .ui-icon-remove-outline:before { content: "\e63c"; }
+  
+  .ui-icon-circle-plus-outline:before { content: "\e602"; }
+  
+  .ui-icon-close:before { content: "\e60f"; }
+  
+  .ui-icon-check:before { content: "\e611"; }
+  
+  .ui-icon-circle-close:before { content: "\e607"; }
+  
+  .ui-icon-circle-check:before { content: "\e639"; }
+  
+  .ui-icon-circle-close-outline:before { content: "\e609"; }
+  
+  .ui-icon-circle-check-outline:before { content: "\e63e"; }
+  
+  .ui-icon-zoom-out:before { content: "\e645"; }
+  
+  .ui-icon-zoom-in:before { content: "\e641"; }
+  
+  .ui-icon-d-caret:before { content: "\e615"; }
+  
+  .ui-icon-sort:before { content: "\e640"; }
+  
+  .ui-icon-sort-down:before { content: "\e630"; }
+  
+  .ui-icon-sort-up:before { content: "\e631"; }
+  
+  .ui-icon-tickets:before { content: "\e63f"; }
+  
+  .ui-icon-document:before { content: "\e614"; }
+  
+  .ui-icon-goods:before { content: "\e618"; }
+  
+  .ui-icon-sold-out:before { content: "\e63b"; }
+  
+  .ui-icon-news:before { content: "\e625"; }
+  
+  .ui-icon-message:before { content: "\e61b"; }
+  
+  .ui-icon-date:before { content: "\e608"; }
+  
+  .ui-icon-printer:before { content: "\e62f"; }
+  
+  .ui-icon-time:before { content: "\e642"; }
+  
+  .ui-icon-buil:before { content: "\e622"; }
+  
+  .ui-icon-mobile-phone:before { content: "\e624"; }
+  
+  .ui-icon-service:before { content: "\e63a"; }
+  
+  .ui-icon-view:before { content: "\e643"; }
+  
+  .ui-icon-menu:before { content: "\e620"; }
+  
+  .ui-icon-more:before { content: "\e646"; }
+  
+  .ui-icon-more-outline:before { content: "\e626"; }
+  
+  .ui-icon-star-on:before { content: "\e637"; }
+  
+  .ui-icon-star-off:before { content: "\e63d"; }
+  
+  .ui-icon-location:before { content: "\e61d"; }
+  
+  .ui-icon-location-outline:before { content: "\e61f"; }
+  
+  .ui-icon-phone:before { content: "\e627"; }
+  
+  .ui-icon-phone-outline:before { content: "\e628"; }
+  
+  .ui-icon-picture:before { content: "\e629"; }
+  
+  .ui-icon-picture-outline:before { content: "\e62a"; }
+  
+  .ui-icon-duiete:before { content: "\e612"; }
+  
+  .ui-icon-search:before { content: "\e619"; }
+  
+  .ui-icon-edit:before { content: "\e61c"; }
+  
+  .ui-icon-edit-outline:before { content: "\e616"; }
+  
+  .ui-icon-rank:before { content: "\e632"; }
+  
+  .ui-icon-refresh:before { content: "\e633"; }
+  
+  .ui-icon-share:before { content: "\e636"; }
+  
+  .ui-icon-setting:before { content: "\e638"; }
+  
+  .ui-icon-upload:before { content: "\e60d"; }
+  
+  .ui-icon-upload2:before { content: "\e644"; }
+  
+  .ui-icon-download:before { content: "\e617"; }
+  
+  .ui-icon-loading:before { content: "\e61e"; }
+  
+  .ui-icon-loading {
+    animation: rotating 2s linear infinite;
+  }
+  
+  .ui-icon--right {
+    margin-left: 5px;
+  }
+  .ui-icon--left {
+    margin-right: 5px;
+  }
+  
+  @keyframes rotating {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
