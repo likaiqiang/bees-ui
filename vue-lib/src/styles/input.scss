@@ -42,13 +42,14 @@ input:-webkit-autofill {
 input[disabled], input[readonly] {
   cursor: default;
 }
-
-.ui-input > input {
+.ui-input{
+  display: inline-flex;
+}
+.ui-input  input {
   height: 20px;
   line-height: 20px;
   padding: 9px 8px; 
   border: 1px solid $borderNormal;
-  border-radius: 4px;
   background-color: $white;
   font-size: 14px;
   outline: none;
@@ -57,75 +58,34 @@ input[disabled], input[readonly] {
   transition: border-color .15s, background-color .15s;
 }
 
-.ui-input:hover > input {
+.ui-input:hover  input {
   border-color: $borderHover;
 }
-.ui-input > input:focus {
+.ui-input  input:focus {
   border-color: $borderFocus;
 }
-
-
-div.ui-input > input {
-  width: 100%;
-  height: 40px;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;   
+.ui-input .ui-icon{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    color: #808695;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
 }
-
-/* input with count */
-.ui-input-x {
+.ui-input .ui-input-wrapper{
   position: relative;
+  display: inline-block;
 }
-// .ui-input-x > input {
-//   display: block;
-//   width: 100%;
-//   height: 20px;
-//   line-height: 20px;
-//   padding: 9px 0 9px;
-//   border: 0 none;
-//   border-top: 1px solid transparent;
-//   border-bottom: 1px solid transparent;
-//   right: -6px;
-//   color: $dark;
-//   font-size: 14px;
-//   outline: none;
-//   background: none;
-//   background-clip: content-box;
-//   position: relative;
-//   z-index: 1;
-// }
-// .ui-input-x > .ui-input {
-//   position: absolute;
-//   border: 1px solid $borderNormal;
-//   border-radius: $borderRadius;
-//   background-color: $white;
-//   top: 0; bottom: 0; left: 0; right: 0;
-//   -webkit-transition: border-color .15s, background-color .15s;
-//   transition: border-color .15s, background-color .15s;
-// }
-.ui-input-count {
-  line-height: 38px;
-  padding: 0 2px;
-  background-color: $white;
-  color: $gray;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  right: 8px; top: 1px;
-  z-index: 1;
+.ui-input .ui-input-append{
+    margin-left: -1px;
 }
-.ui-input-x:hover > .ui-input {
-  border-color: $borderHover;
+.ui-input .ui-input-prepend{
+  margin-right: 1px;
 }
-/* 注意相邻位置，如果文本域前后位置发生变化，表单验证组件Validate.js 中 getTarget那里逻辑也要变化 */
-.ui-input-x > input:focus ~ .ui-input {
-  border-color: $borderFocus;
-}
-.ui-input-x .ui-placeholder {
-  padding: 9px 7px;
-  z-index: 1;
-}
-
 /* type=[search] with icon */
 div.ui-search-input,
 span.ui-search-input {
