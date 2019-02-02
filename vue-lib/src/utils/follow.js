@@ -36,16 +36,12 @@ var follow = function (trigger, target, options) {
     var triL, triT, tarL, tarT;
     var triH = 0;
     var triW = 0;
+    var tarH = target.getBoundingClientRect().height
+    var tarW = target.getBoundingClientRect().width
     //缓存目标对象高度，宽度，提高鼠标跟随时显示性能，元素隐藏时缓存清除
-    if (!tarH) {
-        tarH = target.getBoundingClientRect().height
-    }
-    if (!tarW) {
-        tarW = target.getBoundingClientRect().width
-    }
 
-    var st = window.scrollTop;
-    var sl = window.scrollLeft;
+    var st = window.scrollY;
+    var sl = window.scrollX;
 
     var offX = parseInt(params.offsets.x, 10) || 0;
     var offY = parseInt(params.offsets.y, 10) || 0;
@@ -59,8 +55,8 @@ var follow = function (trigger, target, options) {
     triW = trigger.getBoundingClientRect().width;
     // triL = pos.left;
     // triT = pos.top;
-    triL = trigger.getBoundingClientRect().left + window.scrollLeft
-    triT = trigger.getBoundingClientRect().top + window.scrollTop
+    triL = trigger.getBoundingClientRect().left + window.scrollX
+    triT = trigger.getBoundingClientRect().top + window.scrollY
 
     // 合法的位置关系数据
     var arrLegalPos = ['4-1', '1-4', '5-7', '2-3', '2-1', '6-8', '3-4', '4-3', '8-6', '1-2', '7-5', '3-2'];
@@ -335,3 +331,5 @@ var follow = function (trigger, target, options) {
     //     target.zIndex();
     // }
 };
+
+export default follow

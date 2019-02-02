@@ -5,6 +5,7 @@
     <ui-input width="450px" v-model="value" :close="true">
       <ui-button slot="append" type="primary">search</ui-button>
     </ui-input>
+    <ui-date-picker></ui-date-picker>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import Button from '@/components/button/index.js'
 import Input from '@/components/input/index.js'
 import Icon from '@/components/icon/index.js'
+import '@/components/datePicker/index.js'
 
 export default {
   name: 'app',

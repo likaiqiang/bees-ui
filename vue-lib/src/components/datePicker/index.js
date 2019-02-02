@@ -1,4 +1,4 @@
-import datePicker from './src/button.vue'
+import datePicker from './src/datePicker.vue'
 import Vue from 'vue'
 Vue.component(datePicker.name,datePicker)
 export default datePicker
