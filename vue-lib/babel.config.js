@@ -1,5 +1,1 @@
-module.exports = {
-  presets: [
-    'env'
-  ]
-}
+

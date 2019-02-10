@@ -1,6 +1,5 @@
 <script>
-import { directive } from 'vee-validate';
-import { isHtml } from "@/js/utils/tools.js";
+import { isHtml } from "@/utils/tools.js";
 export default {
   props: {
     content:{
@@ -22,7 +21,7 @@ export default {
         if(typeof content == 'function'){
             content = content()
         }
-        if(this.$slots.default.length){
+        if( this.$slots.default && this.$slots.default.length){
             return this.$slots.default[0]
         }
         else {

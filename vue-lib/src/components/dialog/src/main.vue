@@ -1,9 +1,9 @@
 <template>
-  <div class="ui-dialog-container" ref="dialogContainer" @click="handleWrapperClick" tabindex="-1" v-show="visible">
-    <div class="ui-dialog" ref="dialog">
+  <div class="ui-dialog-container" ref="dialogContainer"  v-show="visible">
+    <div class="ui-dialog" ref="dialog" v-click-outside="closeDialog">
       <div class="ui-dialog-header">
         <p class="ui-dialog-title">{{title}}</p>
-        <ui-icon name="close" class="ui-dialog-close" @click="closeDialog()"></ui-icon>
+        <ui-icon type="md-close" class="ui-dialog-close" @click="closeDialog()"></ui-icon>
       </div>
       <dialog-body>
         <slot></slot>
@@ -12,7 +12,8 @@
         <ui-button 
           v-for="(btn,i) in buttons" 
           :key="i" 
-          :type="i ? (btn.type || '') : (btn.type || 'primary')">
+          :type="i ? (btn.type || '') : (btn.type || 'primary')"
+          @click="clickBtn(i)">
           {{i ? (btn.value || '取消') : (btn.value || '确定')}}
         </ui-button>
       </div>
@@ -25,16 +26,8 @@ import uiIcon from "@/components/icon";
 import uiButton from "@/components/button";
 import uiInput from "@/components/input";
 import dialogBody from './dialogBody.vue'
-
-import VeeValidate, { Validator } from "vee-validate";
-import zh_CN from "vee-validate/dist/locale/zh_CN";
-import { isEmptyObject } from "@/js/utils/tools.js";
-
-Validator.localize("zh_CN", zh_CN);
-
-// for (var key in rules) {
-//   Validator.extend(key, rules[key]);
-// }
+import { isEmptyObject } from "@/utils/tools.js";
+import ClickOutside from 'vue-click-outside'
 
 export default {
   name: "ui-dialog",
@@ -48,8 +41,17 @@ export default {
   },
   methods: {
     closeDialog(){
-
+      this.$emit('update:visible',false)
+    },
+    clickBtn(i){
+      if(typeof this.buttons[i].callback == 'function'){
+        this.buttons[i].callback.call(this)
+      }
+      this.closeDialog()
     }
+  },
+  directives:{
+    ClickOutside
   },
   components:{
     dialogBody
@@ -70,18 +72,5 @@ export default {
       default:false
     }
   },
-  methods: {
-    handleWrapperClick(e) {
-      var { dialog } = this.$refs;
-
-      if (e.target != dialog && e.target.contains(dialog)) {
-        this.closeDialog();
-      }
-    }
-  }
 };
 </script>
-
-<style lang="scss">
-  @import "../../../css/dialog.scss";
-</style>
