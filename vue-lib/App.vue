@@ -5,12 +5,12 @@
     <ui-input width="450px" v-model="value" :close="true">
       <ui-button slot="append" type="primary">search</ui-button>
     </ui-input>
-    <!-- <ui-date-picker></ui-date-picker> -->
-    <ui-dialog :visible.sync="dialog" title="title">
+    <ui-date-picker></ui-date-picker>
+    <!-- <ui-dialog :visible.sync="dialog" title="title">
       <div>
         content
       </div>
-    </ui-dialog>
+    </ui-dialog> -->
   </div>
 </template>
 <script>
@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './src/styles/index.scss'
+  @import './src/styles/index.scss';
 </style>

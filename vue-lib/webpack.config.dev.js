@@ -26,49 +26,49 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.(js)$/,
-                exclude: /(node_modules|bower_components)/,
-                use: ['babel-loader', 'source-map-loader'],
-                enforce: 'pre'
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
+            test: /\.(js)$/,
+            exclude: /(node_modules|bower_components)/,
+            use: ['babel-loader', 'source-map-loader'],
+            enforce: 'pre'
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+                extractCSS: true,
+                postcss: [require('autoprefixer')({
+                    browsers: [
+                        "> 1%",
+                        "last 10 versions",
+                        "ie 9"
+                    ]
+                })]
+            }
+        },
+        {
+            test: /\.scss$/,
+            use: ['css-loader', 'sass-loader']
+        },
+        {
+            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            use: [{
+                loader: 'file-loader',
                 options: {
-                    extractCSS: true,
-                    postcss: [require('autoprefixer')({
-                        browsers: [
-                            "> 1%",
-                            "last 10 versions",
-                            "ie 9"
-                        ]
-                    })]
+                    name: 'static/fonts/[name].[ext]'
                 }
-            },
-            {
-                test: /\.scss$/,
-                use: ['css-loader','sass-loader']
-            },
-            {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                use:[{
-                    loader:'file-loader',
-                    options:{
-                        name: 'static/fonts/[name].[ext]'
-                    }  
-                }]
-            },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                  {
+            }]
+        },
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+                {
                     loader: 'file-loader',
                     options: {
-                        name:'static/images/[name].[ext]'
+                        name: 'static/images/[name].[ext]'
                     }
-                  }
-                ]
-              }
+                }
+            ]
+        }
         ]
     },
     plugins: [

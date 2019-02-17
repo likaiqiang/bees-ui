@@ -3,6 +3,12 @@
 // 一些全局变量
 // 使用双斜杠注释
 
+//element-ui 
+$--color-text-primary: #303133 !default;
+$--color-text-regular: #606266 !default;
+$--color-text-secondary: #909399 !default;
+$--color-text-placeholder: #c0c4cc !default;
+//element-ui
 // 常见颜色
 $dark: #4c5161;           // 站点默认文字颜色
 $blue: #2486ff;           // 链接色，高亮色
@@ -50,3 +56,8 @@ $borderRadius: 4px;
 
 // 图片背景路径
 $urlImage: '~/src/styles/images'!default;
+
+/* Scrollbar
+--------------------------*/
+$--scrollbar-background-color: rgba($--color-text-secondary, .3) !default;
+$--scrollbar-hover-background-color: rgba($--color-text-secondary, .5) !default;

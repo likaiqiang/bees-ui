@@ -1,9 +1,9 @@
-import { on, off } from 'element-ui/src/utils/dom';
+
 import { renderThumbStyle, BAR_MAP } from './util';
 
 /* istanbul ignore next */
 export default {
-  name: 'Bar',
+  name: 'ui-bar',
 
   props: {
     vertical: Boolean,
@@ -26,11 +26,11 @@ export default {
 
     return (
       <div
-        class={ ['el-scrollbar__bar', 'is-' + bar.key] }
+        class={ ['ui-scrollbar__bar', 'is-' + bar.key] }
         onMousedown={ this.clickTrackHandler } >
         <div
           ref="thumb"
-          class="el-scrollbar__thumb"
+          class="ui-scrollbar__thumb"
           onMousedown={ this.clickThumbHandler }
           style={ renderThumbStyle({ size, move, bar }) }>
         </div>
@@ -55,9 +55,8 @@ export default {
     startDrag(e) {
       e.stopImmediatePropagation();
       this.cursorDown = true;
-
-      on(document, 'mousemove', this.mouseMoveDocumentHandler);
-      on(document, 'mouseup', this.mouseUpDocumentHandler);
+      document.addEventListener('mousemove',this.mouseMoveDocumentHandler)
+      document.addEventListener('mouseup',this.mouseUpDocumentHandler)
       document.onselectstart = () => false;
     },
 
@@ -77,12 +76,12 @@ export default {
     mouseUpDocumentHandler(e) {
       this.cursorDown = false;
       this[this.bar.axis] = 0;
-      off(document, 'mousemove', this.mouseMoveDocumentHandler);
+      document.removeEventListener('mousemove',this.mouseMoveDocumentHandler)
       document.onselectstart = null;
     }
   },
 
   destroyed() {
-    off(document, 'mouseup', this.mouseUpDocumentHandler);
+    document.removeEventListener('mouseup',this.mouseUpDocumentHandler)
   }
 };

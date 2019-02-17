@@ -40,7 +40,7 @@
     "url-loader": "^1.1.1",
     "vee-validate": "^2.1.0-beta.8",
     "vue": "2.5.15",
-    "vue-loader": "14.2.2",
+    "vue-loader": "^14.2.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "2.5.15",
     "web-webpack-plugin": "^1.10.0",
@@ -55,6 +55,7 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
     "lodash": "^4.17.11",
+    "resize-observer-polyfill": "^1.5.1",
     "vue-click-outside": "^1.0.7"
   },
   "engines": {
