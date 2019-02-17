@@ -39,7 +39,7 @@
                   :key="index"
                   @click.stop="selectYearMonth(item)"
                   :class="yearMonthSelected==index?'selected':''"
-                >{{`${item.year}年${item.month+1}月`}}</li>
+                >{{`${item.year}年${item.realMonth}月`}}</li>
               </ul>
             </div>
           </a>
@@ -201,13 +201,15 @@ export default {
         }
         arr.push({
           year,
-          month
+          month,
+          realMonth:this.leftPad(month+1)
         });
       }
       var { year, month, date } = getYearMonthDate(this.value);
       arr.push({
         year,
-        month
+        month,
+        realMonth:this.leftPad(month+1)
       });
       for (var i = 0; i < 12; i++) {
         month++;
@@ -217,7 +219,8 @@ export default {
         }
         arr.push({
           year,
-          month
+          month,
+          realMonth:this.leftPad(month+1)
         });
       }
       return arr;
