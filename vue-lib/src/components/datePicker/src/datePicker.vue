@@ -30,7 +30,19 @@
               ></path>
             </svg>
           </a>
-          <a href="javascript:" class="ui-date-switch">{{`${year}-${month}`}}</a>
+          <a href="javascript:" class="ui-date-switch" @click="isShowYearMonth=true">
+            <span>{{`${year}-${month}`}}</span>
+            <div v-show="isShowYearMonth" class="ui-date-year-month">
+              <ul>
+                <li
+                  v-for="(item,index) in yearMonth"
+                  :key="index"
+                  @click.stop="selectYearMonth(item)"
+                  :class="yearMonthSelected==index?'selected':''"
+                >{{`${item.year}年${item.month+1}月`}}</li>
+              </ul>
+            </div>
+          </a>
         </div>
         <div class="ui-day-x">
           <span class="ui-day-item">日</span>
@@ -67,13 +79,12 @@ export default {
     return {
       value: new Date(),
       visible: false,
-      mode: "year",
-      selected: -1 //selected永远是当月的
+      isShowYearMonth: false,
+      isShowMinute: false
     };
   },
   created() {
     this.value = new Date();
-    this.setSelected();
   },
   mounted() {
     Follow(this.$refs.input.$el, this.$refs.panel);
@@ -94,31 +105,26 @@ export default {
     selecteDate(item, index) {
       const { year, month, date } = getYearMonthDate(this.value);
       this.value = new Date(year, month + item.monthIndex, item.date);
-      this.setSelected();
-      this.visible = false
-    },
-    setSelected() {
-      var { date } = getYearMonthDate(this.value);
-      var index = this.visibleDates.findIndex(item => {
-        return item.monthIndex === 0 && item.date === date;
-      });
-      if (index) {
-        this.selected = index;
-      } else this.selected = -1;
+      this.visible = false;
     },
     prevMonth() {
       var { year, month, date } = getYearMonthDate(this.value);
       this.value = new Date(year, month - 1, date);
-      this.setSelected()
     },
     nextMonth() {
       var { year, month, date } = getYearMonthDate(this.value);
       this.value = new Date(year, month + 1, date);
-      this.setSelected()
     },
-    now(){
+    now() {
       this.value = new Date();
-      this.setSelected()
+    },
+    selectYearMonth(item) {
+      var { year, month, date } = getYearMonthDate(this.value);
+      this.value = new Date(item.year, item.month, date);
+      this.isShowYearMonth = false
+      this.$nextTick(()=>{
+        console.log(this.isShowYearMonth)
+      })
     }
   },
   computed: {
@@ -131,36 +137,24 @@ export default {
     date() {
       return new Date(this.value).getDate();
     },
-    dates() {
-      var firstDate,
-        lastDate,
-        firstDay,
-        arr = [],
-        year = this.year,
-        month = this.month,
-        date = this.date;
-      if (
-        typeof this.year !== "undefined" &&
-        typeof this.month !== "undefined" &&
-        typeof this.date !== "undefined"
-      ) {
-        firstDate = new Date(year, month, 1).getDate();
-        lastDate = new Date(year, month + 1, 0).getDate();
-        for (var i = firstDate; i <= lastDate; i++) {
-          arr.push(i);
-        }
-        firstDay = new Date(year, month, 1).getDay();
-        for (var i = 0; i < firstDay; i++) {
-          var d = new Date(year, month, -i).getDate();
-          arr.unshift(d);
-        }
-        for (var i = 1; i <= 42 - lastDate - firstDay; i++) {
-          var d = new Date(year, month + 1, i).getDate();
-          arr.push(d);
-        }
-        console.log(arr);
-        return arr;
+    selected() {
+      var { date } = getYearMonthDate(this.value);
+      var index = this.visibleDates.findIndex(item => {
+        return item.monthIndex === 0 && item.date === date;
+      });
+      if (index) {
+        return index;
       }
+      return -1;
+    },
+    yearMonthSelected() {
+      var { year, month, date } = getYearMonthDate(this.value);
+      if (this.yearMonth && this.yearMonth.length) {
+        var index = this.yearMonth.findIndex(item => {
+          return item.year == year && item.month == month;
+        });
+        return index;
+      } else return -1;
     },
     formatValue() {
       const { year, month, date } = getYearMonthDate(this.value);
@@ -195,7 +189,40 @@ export default {
         });
       }
       return [...lastMonthDates, ...curMonthDates, ...nextMonthDates];
-    }
+    },
+    yearMonth() {
+      var arr = [];
+      var { year, month, date } = getYearMonthDate(this.value);
+      for (var i = 0; i < 12; i++) {
+        month--;
+        if (month < 0) {
+          month = 11;
+          year--;
+        }
+        arr.push({
+          year,
+          month
+        });
+      }
+      var { year, month, date } = getYearMonthDate(this.value);
+      arr.push({
+        year,
+        month
+      });
+      for (var i = 0; i < 12; i++) {
+        month++;
+        if (month > 11) {
+          month = 0;
+          year++;
+        }
+        arr.push({
+          year,
+          month
+        });
+      }
+      return arr;
+    },
+    hourMiunte() {}
   }
 };
 </script>

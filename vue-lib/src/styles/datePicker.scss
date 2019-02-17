@@ -37,7 +37,6 @@
 
 .ui-date-head {
 	padding: 5px 0 0;
-	overflow: hidden;
 }
 .ui-date-half {
 	width: 50%;
@@ -98,8 +97,39 @@ span.ui-date-next {
 	border-radius: 2px;
 	color: $dark;
 	text-align: center;
+	position: relative;
+	>span{
+		display: block;
+	}
+	.ui-date-year-month{
+		position: absolute;
+		width: 100%;
+		top: 100%;
+		background-color: white;
+		height: 215px;
+		overflow: auto;
+		box-shadow: 0 7px 21px rgba(0,0,0,.1);
+		ul{
+			margin: 0;
+			padding: 0;
+			li{
+				list-style: none;
+				padding: 8px 12px;
+    			vertical-align: middle;
+				cursor: pointer;
+				&:hover{
+					color: $dark;
+					background-color: $backgroundHover;
+				}
+				&.selected{
+					color: $dark;
+					background-color: $backgroundHover;
+				}
+			}
+		}
+	}
 }
-a.ui-date-switch:hover,
+a.ui-date-switch>span:hover,
 a.ui-date-item:hover {
 	color: $dark;
 	background-color: $backgroundHover;
