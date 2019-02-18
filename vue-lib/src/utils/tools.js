@@ -31,3 +31,6 @@ export function outerWidth(el){
 export function isHtml(html){
     return /<[^>]+>/g.test(html)
 }
+export function createId(){
+    return ('id_' + Math.random()).replace('0.', '');
+}

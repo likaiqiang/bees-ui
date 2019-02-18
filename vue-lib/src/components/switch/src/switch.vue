@@ -1,12 +1,18 @@
 <template>
     <div style="display:inline-block" @click="toggleCheck">
-        <input type="checkbox" :disabled="disabled" :checked="checked"><label class="ui-switch"></label>
+        <input :id="id" type="checkbox" :disabled="disabled" :checked="checked"><label :for="id" class="ui-switch"></label>
     </div>
 </template>
 
 <script>
+import {createId} from '@/utils/tools'
 export default {
     name:'ui-switch',
+    data(){
+        return {
+            id: createId()
+        }
+    },
     props:{
         checked:{
             type:Boolean,
