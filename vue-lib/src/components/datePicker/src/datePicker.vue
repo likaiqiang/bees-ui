@@ -95,6 +95,7 @@ export default {
   methods: {
     hide() {
       this.visible = false;
+      this.isShowYearMonth = false
     },
     focus() {
       this.visible = true;
@@ -205,12 +206,14 @@ export default {
           realMonth:this.leftPad(month+1)
         });
       }
+      arr.reverse()
       var { year, month, date } = getYearMonthDate(this.value);
       arr.push({
         year,
         month,
         realMonth:this.leftPad(month+1)
       });
+      
       for (var i = 0; i < 12; i++) {
         month++;
         if (month > 11) {

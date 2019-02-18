@@ -11,6 +11,7 @@
         content
       </div>
     </ui-dialog> -->
+    <ui-switch :checked.sync="checked" :disabled="true"></ui-switch>
   </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ import Input from '@/components/input/index.js'
 import Icon from '@/components/icon/index.js'
 import '@/components/datePicker/index.js'
 import '@/components/dialog/index.js'
+import '@/components/switch/index.js'
 
 export default {
   name: 'app',
@@ -26,7 +28,8 @@ export default {
     return {
       loading:false,
       value:'hello',
-      dialog:true
+      dialog:true,
+      checked:true
     }
   }
 }

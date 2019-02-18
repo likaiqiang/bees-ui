@@ -1,0 +1,65 @@
+.ui-switch {
+    display: inline-block;
+    width: 44px;
+    height: 26px;
+    border: 2px solid;
+    border-radius: 26px;
+    background-color: currentColor;
+    box-sizing: border-box;
+    color: $silver;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    cursor: pointer;
+  }
+  input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    z-index: -1;
+}
+  .ui-switch::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: $white;
+      -webkit-transition: margin-left .2s;
+      transition: margin-left .2s;
+  }
+  
+  :active + .ui-switch::before {
+      box-shadow: inset 1px 1px 1px rgba(0,0,0,.1);
+  }
+  
+  :checked + .ui-switch {
+    color: $blue;
+  }
+  :checked + .ui-switch::before {
+    margin-left: 18px;
+  }
+  
+  :disabled + .ui-switch {
+    opacity: .38;
+    cursor: default;
+  }
+  
+  :focus + .ui-switch,
+  .ui-switch:hover {
+      color: $gray;
+  }
+  :checked:focus + .ui-switch,
+  :checked + .ui-switch:hover {
+    color: $darkblue;
+  }
+  
+  :disabled + .ui-switch:hover {
+     color: $silver;
+  }
+  :checked:disabled + .ui-switch:hover {
+    color: $blue;
+  }
+  
