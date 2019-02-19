@@ -1,6 +1,6 @@
 <template>
-    <div style="display:inline-block" @click="toggleCheck">
-        <input :id="id" type="checkbox" :disabled="disabled" :checked="checked"><label :for="id" class="ui-switch"></label>
+    <div style="display:inline-block">
+        <input ref="input" :id="id" type="checkbox" :disabled="disabled" :checked="value"><label :for="id" class="ui-switch"></label>
     </div>
 </template>
 
@@ -14,20 +14,19 @@ export default {
         }
     },
     props:{
-        checked:{
+        value:{
             type:Boolean,
-            default:false
+            required:true
         },
         disabled:{
             type:Boolean,
             default:false
         }
     },
-    methods:{
-        toggleCheck(){
-            if(!this.disabled)
-                this.$emit('update:checked',!this.checked)
-        }
+    mounted(){
+        this.$refs.input.addEventListener('change',()=>{
+            this.$emit('input',!this.value)
+        })
     }
 }
 </script>

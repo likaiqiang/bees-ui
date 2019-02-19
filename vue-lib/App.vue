@@ -11,7 +11,9 @@
         content
       </div>
     </ui-dialog> -->
-    <ui-switch :checked.sync="checked" :disabled="true"></ui-switch>
+    <ui-switch v-model="checked" :disabled="false"></ui-switch>
+    <span>{{checked}}</span>
+    <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
 <script>
@@ -21,6 +23,7 @@ import Icon from '@/components/icon/index.js'
 import '@/components/datePicker/index.js'
 import '@/components/dialog/index.js'
 import '@/components/switch/index.js'
+import '@/components/radio/index.js'
 
 export default {
   name: 'app',
@@ -29,7 +32,7 @@ export default {
       loading:false,
       value:'hello',
       dialog:true,
-      checked:true
+      checked:false
     }
   }
 }
