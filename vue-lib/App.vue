@@ -11,7 +11,8 @@
         content
       </div>
     </ui-dialog> -->
-    <ui-switch v-model="checked" :disabled="false"></ui-switch>
+    <ui-switch v-model="checked" :disabled="true"></ui-switch>
+    <ui-radio v-model="checked2" label="男" :disabled="false"></ui-radio>
     <span>{{checked}}</span>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
@@ -32,7 +33,8 @@ export default {
       loading:false,
       value:'hello',
       dialog:true,
-      checked:false
+      checked:false,
+      checked2:false
     }
   }
 }

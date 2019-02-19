@@ -25,7 +25,8 @@ export default {
     },
     mounted(){
         this.$refs.input.addEventListener('change',()=>{
-            this.$emit('input',!this.value)
+            if(!this.disabled)
+                this.$emit("input", !this.value);
         })
     }
 }
