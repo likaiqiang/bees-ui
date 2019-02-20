@@ -1,37 +1,49 @@
 <template>
-    <div style="display:inline-block">
-        <input ref="input" :id="id" type="checkbox" :disabled="disabled" :checked="value"><label :for="id" class="ui-switch"></label>
+    <div class="dib">
+        <input
+            ref="input"
+            :id="id"
+            type="checkbox"
+            :disabled="disabled"
+            v-model="val"
+        ><label
+            :for="id"
+            class="ui-switch"
+        ></label>
     </div>
 </template>
 
 <script>
-import {createId} from '@/utils/tools'
+import { createId } from "@/utils/tools";
 export default {
-    name:'ui-switch',
-    data(){
+    name: "ui-switch",
+    data() {
         return {
             id: createId()
-        }
+        };
     },
-    props:{
-        value:{
-            type:Boolean,
-            required:true
+    props: {
+        value: {
+            type: Boolean,
+            required: true
         },
-        disabled:{
-            type:Boolean,
-            default:false
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
-    mounted(){
-        this.$refs.input.addEventListener('change',()=>{
-            if(!this.disabled)
-                this.$emit("input", !this.value);
-        })
+    computed: {
+        val: {
+            get() {
+                return this.value
+            },
+            set(val) {
+                this.$emit('input',val)
+            }
+        }
     }
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -10,36 +10,47 @@
       <div>
         content
       </div>
-    </ui-dialog> -->
-    <ui-switch v-model="checked" :disabled="true"></ui-switch>
-    <ui-radio v-model="checked2" label="男" :disabled="false"></ui-radio>
-    <span>{{checked}}</span>
+    </ui-dialog>-->
+    <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
+    <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
+    <span>{{checked2}}</span>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
 <script>
-import Button from '@/components/button/index.js'
-import Input from '@/components/input/index.js'
-import Icon from '@/components/icon/index.js'
-import '@/components/datePicker/index.js'
-import '@/components/dialog/index.js'
+import Button from "@/components/button/index.js";
+import Input from "@/components/input/index.js";
+import Icon from "@/components/icon/index.js";
+import "@/components/datePicker/index.js";
+import "@/components/dialog/index.js";
 import '@/components/switch/index.js'
-import '@/components/radio/index.js'
+import '@/components/radio-group/index.js'
 
 export default {
-  name: 'app',
-  data(){
+  name: "app",
+  data() {
     return {
-      loading:false,
-      value:'hello',
-      dialog:true,
-      checked:false,
-      checked2:false
-    }
+      loading: false,
+      value: "hello",
+      dialog: true,
+      checked: false,
+      checked2: '2',
+      list: [
+        {
+          label: "男",
+          value: '1'
+        },
+        {
+          label: "女",
+          value: '2',
+          disabled:true
+        }
+      ]
+    };
   }
-}
+};
 </script>
 
 <style lang="scss">
-  @import './src/styles/index.scss';
+@import "./src/styles/index.scss";
 </style>

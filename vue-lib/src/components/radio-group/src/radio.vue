@@ -1,6 +1,6 @@
 <template>
-  <div style="display:inline-block">
-    <input ref="input" type="radio" :id="id" :disabled="disabled" :checked="value">
+  <div class="dib">
+    <input ref="input" type="radio" :id="id" :disabled="disabled" :value="value" v-model="sele">
     <label :for="id" class="ui-radio"></label>
     <label :for="id">{{label}}</label>
   </div>
@@ -17,7 +17,7 @@ export default {
   },
   props: {
     value: {
-      type: Boolean,
+      type: [String,Number],
       required: true
     },
     label: {
@@ -27,13 +27,21 @@ export default {
     disabled:{
         type:Boolean,
         default:false
+    },
+    select:{
+        type:[String,Number],
+        required:true
     }
   },
-  mounted() {
-    this.$refs.input.addEventListener("change", () => {
-      if(!this.disabled)
-        this.$emit("input", !this.value);
-    });
+  computed:{
+      sele:{
+          get(){
+              return this.select
+          },
+          set(val){
+              this.$emit('update:select',val)
+          }
+      }
   }
 };
 </script>
