@@ -29,7 +29,7 @@ export default {
         },
         value:{
             required:true,
-            type:Array
+            type:[Number,String]
         }
     },
     computed: {

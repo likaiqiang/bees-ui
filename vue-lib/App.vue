@@ -14,7 +14,8 @@
     <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
     <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
     <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>
-    <span>{{checked2}}</span>
+    <ui-select :list="list2"></ui-select>
+    <!-- <span>{{checked2}}</span> -->
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
@@ -27,6 +28,7 @@ import "@/components/dialog/index.js";
 import '@/components/switch/index.js'
 import '@/components/radio-group/index.js'
 import '@/components/checkbox-group/index.js'
+import '@/components/select/index.js'
 
 export default {
   name: "app",
@@ -66,7 +68,7 @@ export default {
               value:'4'
           }
       ],
-      checked3:[]
+      checked3:['1','4']
     };
   }
 };
