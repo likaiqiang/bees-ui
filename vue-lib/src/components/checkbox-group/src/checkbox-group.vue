@@ -6,6 +6,7 @@
                 :id="item.id"
                 :value="item.value"
                 v-model="val"
+                :disabled="item.disabled"
             >
             <label
                 :for="item.id"

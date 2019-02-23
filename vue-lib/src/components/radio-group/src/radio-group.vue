@@ -1,42 +1,53 @@
 <template>
     <div class="dib">
-        <ui-radio
-            v-for="(item,index) in list"
-            :key="index"
-            :label="item.label"
-            :value="item.value"
-            :select.sync="val"
-            :disabled="item.disabled"
-        ></ui-radio>
+        <div class="dib" v-for="(item,index) in ls" :key="index">
+            <input
+                ref="input"
+                type="radio"
+                :id="item.id"
+                :disabled="item.disabled"
+                :value="item.value"
+                v-model="val"
+            >
+            <label
+                :for="item.id"
+                class="ui-radio"
+            ></label>
+            <label :for="item.id">{{item.label}}</label>
+        </div>
     </div>
 </template>
 
 <script>
-import Radio from './radio.vue'
+import { createId } from "@/utils/tools";
 export default {
     name: "ui-radio-group",
     props: {
         list: {
             type: Array,
-            required: true
+            default: []
         },
-        value: {
-            type: String,
-            required: true
+        value:{
+            required:true,
+            type:Array
         }
     },
     computed: {
-        val:{
-            get(){
-                return this.value
+        val: {
+            get() {
+                return this.value;
             },
-            set(val){
-                this.$emit('input',val)
+            set(val) {
+                this.$emit("input", val);
             }
+        },
+        ls() {
+            var arr = this.list.slice();
+            arr.forEach(item => {
+                this.$set(item, "id", createId());
+            });
+            return arr;
         }
-    },
-    components:{
-        [Radio.name]:Radio
     }
 };
 </script>
