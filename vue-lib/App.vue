@@ -13,6 +13,7 @@
     </ui-dialog>-->
     <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
     <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
+    <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>
     <span>{{checked2}}</span>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
@@ -25,6 +26,7 @@ import "@/components/datePicker/index.js";
 import "@/components/dialog/index.js";
 import '@/components/switch/index.js'
 import '@/components/radio-group/index.js'
+import '@/components/checkbox-group/index.js'
 
 export default {
   name: "app",
@@ -37,7 +39,7 @@ export default {
       checked2: '2',
       list: [
         {
-          label: "男",
+          label: "男”·",
           value: '1'
         },
         {
@@ -45,7 +47,26 @@ export default {
           value: '2',
           disabled:true
         }
-      ]
+      ],
+      list2:[
+          {
+              label:'label1',
+              value:'1'
+          },
+          {
+              label:'label2',
+              value:'2'
+          },
+          {
+              label:'label3',
+              value:'3'
+          },
+          {
+              label:'label4',
+              value:'4'
+          }
+      ],
+      checked3:[]
     };
   }
 };
