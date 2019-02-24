@@ -46,7 +46,8 @@ select[hidden] + .ui-select {
 }
 
 .ui-select {
-	display: inline-block;
+    display: inline-block;
+    width: 100px;
 	height: 40px; line-height: 20px;
 	vertical-align: middle;
 	-webkit-animation: fadeIn .2s;
@@ -114,9 +115,6 @@ select[hidden] + .ui-select {
 }
 
 .ui-select-datalist {
-	position: absolute;
-	left: 0; right:0;
-	top: 39px;
 	max-height: 304px;
 	padding: 0;
 	border: 1px solid $borderFocus;

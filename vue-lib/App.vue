@@ -14,8 +14,8 @@
     <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
     <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
     <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>
-    <ui-select :list="list2"></ui-select>
-    <!-- <span>{{checked2}}</span> -->
+    <ui-select :list="list2" v-model="selected"></ui-select>
+    <div>{{checked2}}</div>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
@@ -68,7 +68,8 @@ export default {
               value:'4'
           }
       ],
-      checked3:['1','4']
+      checked3:['1','4'],
+      selected:'3'
     };
   }
 };
