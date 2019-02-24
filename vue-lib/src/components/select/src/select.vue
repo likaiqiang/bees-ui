@@ -35,7 +35,7 @@ export default {
     methods:{
         clickHandler(i){
             this.$emit('input',this.list[i].value)
-            this.selectedText = this.list[i].label
+    
             this.visible = false
         }
     },

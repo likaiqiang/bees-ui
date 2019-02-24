@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import ClickOutside from "vue-click-outside";
+import ClickOutside from "@/directives/clickoutside.js";
 import "@/components/input/index.js";
 import Follow from "@/utils/follow.js";
 import { getYearMonthDate } from "./helper.js";

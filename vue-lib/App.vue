@@ -6,11 +6,11 @@
       <ui-button slot="append" type="primary">search</ui-button>
     </ui-input>
     <ui-date-picker></ui-date-picker>
-    <!-- <ui-dialog :visible.sync="dialog" title="title">
+    <ui-dialog :visible.sync="dialog" title="title">
       <div>
         content
       </div>
-    </ui-dialog>-->
+    </ui-dialog>
     <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
     <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
     <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>

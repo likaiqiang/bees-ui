@@ -27,7 +27,7 @@ import uiButton from "@/components/button";
 import uiInput from "@/components/input";
 import dialogBody from './dialogBody.vue'
 import { isEmptyObject } from "@/utils/tools.js";
-import ClickOutside from 'vue-click-outside'
+import ClickOutside from '@/directives/clickoutside.js'
 
 export default {
   name: "ui-dialog",
