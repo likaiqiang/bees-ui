@@ -80,7 +80,20 @@ var follow = function (trigger, target, options) {
     if (!alignMatch) {
         align = defaults.position;
     }
-
+    var getNearRelative = function(dom){
+        
+        dom = dom.parentElement
+        var position = getComputedStyle(dom).position
+        while(position!=='relative'){
+            if(dom === document.documentElement) break;
+            dom = dom.parentElement
+            position = getComputedStyle(dom).position
+        }
+        return {
+            top:dom.getBoundingClientRect().top + window.scrollY,
+            left:dom.getBoundingClientRect().left + window.scrollX
+        }
+    }
     // 确定定位方位，是上下左右的哪个
     var funDirect = function (a) {
         var dir = 'bottom';
@@ -323,9 +336,10 @@ var follow = function (trigger, target, options) {
     //     left: Math.round(tarL),
     //     top: Math.round(tarT)
     // }).attr('data-align', align);
+    var {top,left} = getNearRelative(target)
     target.style.position = 'absolute'
-    target.style.left = Math.round(tarL) + 'px'
-    target.style.top = Math.round(tarT) + 'px'
+    target.style.left = Math.round(tarL) + left + 'px'
+    target.style.top = Math.round(tarT) + top +'px'
     // z-index自动最高
     // if (target.zIndex) {
     //     target.zIndex();
