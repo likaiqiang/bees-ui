@@ -1,7 +1,7 @@
 <template>
   <div v-click-outside="hide" style="display:inline-block">
     <ui-input ref="input" @focus="focus" readonly v-model="formatValue"></ui-input>
-    <div class="ui-date-container" ref="panel" v-show="visible">
+    <div class="ui-date-container" ref="panel" v-dom-portal v-show="visible">
       <div class="ui-date-x">
         <div class="ui-date-head">
           <a href="javascript:" class="ui-date-prev" @click="prevMonth">

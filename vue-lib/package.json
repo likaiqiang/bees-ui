@@ -55,7 +55,8 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
     "lodash": "^4.17.11",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "vue-dom-portal": "^0.1.6"
   },
   "engines": {
     "node": ">= 8.8.0",
