@@ -16,6 +16,17 @@
     <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>
     <ui-select :list="list2" v-model="selected"></ui-select>
     <div>{{checked2}}</div>
+    <ui-tabs v-model="curTab">
+        <ui-tab-pane name="likaiqiang" label="likaiqiang">
+            content1
+        </ui-tab-pane>
+        <ui-tab-pane name="xunzhibin" label="xunzhibin">
+            content2
+        </ui-tab-pane>
+        <ui-tab-pane name="shikefeng" label="shikefeng">
+            content3
+        </ui-tab-pane>
+    </ui-tabs>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
@@ -29,6 +40,7 @@ import '@/components/switch/index.js'
 import '@/components/radio-group/index.js'
 import '@/components/checkbox-group/index.js'
 import '@/components/select/index.js'
+import '@/components/tabs/index.js'
 
 export default {
   name: "app",
@@ -69,7 +81,8 @@ export default {
           }
       ],
       checked3:['1','4'],
-      selected:'3'
+      selected:'3',
+      curTab:'likaiqiang'
     };
   }
 };
