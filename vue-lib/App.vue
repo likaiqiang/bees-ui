@@ -18,13 +18,19 @@
     <div>{{checked2}}</div>
     <ui-tabs v-model="curTab">
         <ui-tab-pane name="likaiqiang" label="likaiqiang">
-            content1
+            <div>
+                content1
+            </div>
         </ui-tab-pane>
         <ui-tab-pane name="xunzhibin" label="xunzhibin">
-            content2
+            <div>
+                content2
+            </div>
         </ui-tab-pane>
         <ui-tab-pane name="shikefeng" label="shikefeng">
-            content3
+            <div>
+                content3
+            </div>
         </ui-tab-pane>
     </ui-tabs>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->

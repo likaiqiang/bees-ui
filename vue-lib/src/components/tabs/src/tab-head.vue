@@ -1,13 +1,11 @@
 <template>
-    
+  <div><slot></slot></div>
 </template>
 
 <script>
 export default {
-    name:"ui-tab-head"
-}
+  name: "ui-tab-head"
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
