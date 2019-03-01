@@ -12,8 +12,11 @@
       </div>
     </ui-dialog> -->
     <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
-    <ui-radio-group v-model="checked2" :list="list"></ui-radio-group>
-    <ui-checkbox-group v-model="checked3" :list="list2"></ui-checkbox-group>
+    <!-- <ui-radio-group v-model="checked2" :list="list"></ui-radio-group> -->
+    <ui-checkbox-group v-model="checked3">
+        <ui-checkbox v-for="(item,index) in list2" :key="index" :value="item.value" :label="item.label" :disabled="item.disabled"></ui-checkbox>
+    </ui-checkbox-group>
+    <span>checked3:{{checked3}}</span>
     <ui-select :list="list2" v-model="selected"></ui-select>
     <div>{{checked2}}</div>
     <ui-tabs v-model="curTab">
@@ -33,6 +36,7 @@
             </div>
         </ui-tab-pane>
     </ui-tabs>
+    <!-- <ui-table :columns="columns" :dataSource="tableData"></ui-table> -->
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
@@ -47,6 +51,7 @@ import '@/components/radio-group/index.js'
 import '@/components/checkbox-group/index.js'
 import '@/components/select/index.js'
 import '@/components/tabs/index.js'
+import '@/components/table/index.js'
 
 export default {
   name: "app",
@@ -88,7 +93,44 @@ export default {
       ],
       checked3:['1','4'],
       selected:'3',
-      curTab:'likaiqiang'
+      curTab:'likaiqiang',
+      tableData:[
+          {
+              id:1,
+              name:'likaiqiang',
+              age:24,
+              gender:'男'
+          },
+          {
+              id:2,
+              name:'寻志斌',
+              age:24,
+              gender:'男'
+          },{
+              id:3,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          }
+      ],
+      columns:[
+          {
+              title:'ID',
+              key:'id'
+          },
+          {
+              title:'姓名',
+              key:'name'
+          },
+          {
+              title:'性别',
+              key:'gender'
+          },
+          {
+              title:'年龄',
+              key:'age'
+          }
+      ]
     };
   },
   methods:{

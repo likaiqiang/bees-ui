@@ -1,24 +1,12 @@
 <template>
     <div class="dib">
-        <div class="dib" v-for="(item,index) in ls" :key="index">
-            <input
-                type="checkbox"
-                :id="item.id"
-                :value="item.value"
-                v-model="val"
-                :disabled="item.disabled"
-            >
-            <label
-                :for="item.id"
-                class="ui-checkbox"
-            ></label>
-            <label :for="item.id">{{item.label}}</label>
-        </div>
+        <ui-checkbox v-for="(item,index) in list" :key="index" :label="item.label" :_value="item.value" :value="value.indexOf(item.value)!=-1" @input="changeSelect" :disabled="item.disabled"></ui-checkbox>
     </div>
 </template>
 
 <script>
 import { createId } from "@/utils/tools";
+import checkbox from '../../checkbox/index.js'
 export default {
     data(){
         return {
@@ -27,34 +15,48 @@ export default {
     },
     name: "ui-checkbox-group",
     props: {
-        list: {
-            type: Array,
-            default: []
-        },
         value:{
             required:true,
             type:Array
         }
     },
     computed:{
-        ls(){
-            var arr = this.list.slice()
-            arr.forEach(item=>{
-                this.$set(item,'id',createId())
-            })
-            return arr
-        },
-        val:{
-            get(){
-                return this.value
-            },
-            set(val){
-                this.$emit('input',val)
-            }
+        list(){
+            return this.$slots.default.filter(item => {
+                    return item.tag !== undefined;
+                })
+                .map(item => {
+                    return {
+                        value: item.componentOptions.propsData.value,
+                        label: item.componentOptions.propsData.label,
+                        disabled:item.componentOptions.propsData.disabled
+                    };
+                });
         }
     },
     methods:{
-        createId
+        changeSelect({value,_value}){
+            var newArray = this.value.slice()
+            var index = this.value.indexOf(_value)
+            if(index !== -1){
+                if(!value){
+                    newArray.splice(index,1)
+                }
+                else{
+
+                }
+            }
+            else{
+                newArray.push(_value)
+            }
+            this.$emit('input',newArray)
+        }
+    },
+    components:{
+        [checkbox.name]:checkbox
+    },
+    created(){
+       
     }
 };
 </script>
