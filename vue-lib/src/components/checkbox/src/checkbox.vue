@@ -29,10 +29,10 @@ export default {
             type:Boolean
         },
         _value:{
-            required:true,
+            
         },
         label:{
-            required:true
+            
         },
         disabled:{
             type:Boolean,

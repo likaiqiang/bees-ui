@@ -36,7 +36,7 @@
             </div>
         </ui-tab-pane>
     </ui-tabs>
-    <!-- <ui-table :columns="columns" :dataSource="tableData"></ui-table> -->
+    <ui-table :columns="columns" :dataSource="tableData"></ui-table>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
 </template>
@@ -114,6 +114,9 @@ export default {
           }
       ],
       columns:[
+          {
+              type:'section'
+          },
           {
               title:'ID',
               key:'id'
