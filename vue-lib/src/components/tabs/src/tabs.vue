@@ -1,10 +1,6 @@
 <template>
     <div>
         <ui-tab-head class="ui-tab-tabs">
-            <i
-                class="ui-tab-line"
-                ref="line"
-            ></i>
             <a
                 href="javascript:"
                 ref="tab"
@@ -13,7 +9,10 @@
                 v-for="(item, index) in navs"
                 :key="index"
             >
-                {{item.label}}
+                <Render v-if="typeof item.label == 'function'" :render="item.label"></Render>
+                <template v-else>
+                    {{item.label}}
+                </template>
             </a>
         </ui-tab-head>
         <div class="ui-tab-contents">
@@ -29,11 +28,14 @@
 import tabHead from "./tab-head.vue";
 import tabBody from "./tab-body.vue";
 import Velocity from "velocity-animate";
+import Render from '@/utils/render.js'
+import {parent} from '@/utils/dom.js'
 export default {
     name: "ui-tabs",
     components: {
         [tabHead.name]: tabHead,
-        [tabBody.name]: tabBody
+        [tabBody.name]: tabBody,
+        Render
     },
     computed: {
         navs() {
@@ -62,45 +64,12 @@ export default {
         value: {}
     },
     methods: {
-        changeSelect(e,name) {
-
-            var width = e.target.getBoundingClientRect().width;
+        changeSelect(e, name) {
             this.$emit("input", name);
-            this.$refs.line.style.width = width + "px";
-
-            Velocity(
-                this.$refs.line,
-                {
-                    left: this.position(e.target).left + "px"
-                },
-                {
-                    duration: "300"
-                }
-            );
         },
-        position(dom) {
-            var parent = dom.parentElement;
-            return {
-                left:
-                    dom.getBoundingClientRect().left -
-                    parent.getBoundingClientRect().left,
-                top:
-                    dom.getBoundingClientRect().top -
-                    parent.getBoundingClientRect().top
-            };
-        }
     },
     mounted() {
-        var index = this.navs.findIndex(item => {
-            return item.name === this.value;
-        });
-
-        if (index !== -1) {
-            var width = this.$refs.tab[index].getBoundingClientRect().width;
-            this.$refs.line.style.width = width + "px";
-            this.$refs.line.style.left =
-            this.position(this.$refs.tab[index]) + "px";
-        }
+        
     }
 };
 </script>

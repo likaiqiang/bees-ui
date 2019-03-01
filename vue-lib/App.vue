@@ -17,7 +17,7 @@
     <ui-select :list="list2" v-model="selected"></ui-select>
     <div>{{checked2}}</div>
     <ui-tabs v-model="curTab">
-        <ui-tab-pane name="likaiqiang" label="likaiqiang">
+        <ui-tab-pane name="likaiqiang" :label="label">
             <div>
                 content1
             </div>
@@ -90,6 +90,16 @@ export default {
       selected:'3',
       curTab:'likaiqiang'
     };
+  },
+  methods:{
+      label(){
+          return (
+              <div>
+                <span>1</span>
+                <span>2</span>
+              </div>
+          )
+      }
   }
 };
 </script>
