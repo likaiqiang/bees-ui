@@ -45,10 +45,11 @@ export default {
                 if(typeof this.selected !== 'undefined'){
                     return this.selected
                 }
-                else return ''
+                else return this.value
             },
             set(val){
                 this.$emit('change',val)
+                this.$emit('input',val)
             }
         }
     }

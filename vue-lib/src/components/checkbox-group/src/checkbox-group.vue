@@ -1,20 +1,27 @@
 <template>
     <div class="dib">
-        <ui-checkbox 
-            v-for="(item,index) in list" 
+        <div class="dib" 
+            v-for="(item,index) in list"
             :key="index" :label="item.label" 
-            :value="item.value"
-            :disabled="item.disabled"
-            @change="changeSelect"
-            :selected="value">
-        </ui-checkbox>
+            >
+            <input
+                type="checkbox"
+                :id="item.id"
+                :value="item.value"
+                :disabled="item.disabled"
+                v-model="val"                                                                                                                    
+            >
+            <label
+                :for="item.id"
+                class="ui-checkbox"
+            ></label>
+            <label :for="item.id">{{item.label}}</label>
+        </div>
     </div>
 </template>
 
 <script>
 import { createId } from "@/utils/tools";
-import checkbox from '../../checkbox/index.js'
-import bus from '@/utils/bus.js'
 export default {
     data(){
         return {
@@ -37,37 +44,26 @@ export default {
                     return {
                         value: item.componentOptions.propsData.value,
                         label: item.componentOptions.propsData.label,
-                        disabled:item.componentOptions.propsData.disabled
+                        disabled:item.componentOptions.propsData.disabled,
+                        id:createId()
                     };
                 });
-        } 
-    },
-    methods:{
-        changeSelect(o){
-            if(typeof o === 'boolean'){
-                this.$emit('input',o)
-            }
-            else{
-                var {checked,value} = o,
-                    newArray = this.value.slice(),
-                    index = this.value.indexOf(value)
-                if(index !== -1){
-                    if(!checked){
-                        newArray.splice(index,1)
-                    }
-                    else{
-
-                    }
-                }
-                else{
-                    newArray.push(value)
-                }
-                this.$emit('input',newArray)
+        },
+        val:{
+            get(){
+                return this.value
+            },
+            set(val){
+                this.$emit('input',val)
+                this.$emit('change',val)
             }
         }
     },
+    methods:{
+        createId
+    },
     components:{
-        [checkbox.name]:checkbox
+        
     },
     created(){
        

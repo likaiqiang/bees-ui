@@ -3,15 +3,13 @@
         <input
             type="checkbox"
             :id="id"
-            :value="value"
             :disabled="disabled"
-            v-model="isChecked"   
+            v-model="val"                                                                                                                    
         >
         <label
             :for="id"
             class="ui-checkbox"
         ></label>
-        <label :for="id">{{label}}</label>
     </div>
 </template>
 
@@ -26,43 +24,26 @@ export default {
     },
     props:{
         value:{
-            
+            required:true
         },
         label:{
-            
+            default:''
         },
         disabled:{
             type:Boolean,
             default:false
-        },
-        selected:{
-            type:[Array,Boolean],
-            default:false
         }
     },
     computed:{
-        isChecked:{
+        val:{
             get(){
-                if( this.selected instanceof Array){
-                    return this.selected.indexOf(this.value) !== -1
-                }
-                else return selected
+                return this.value
             },
-            set(checked){
-                if(this.selected instanceof Array){
-                    this.$emit('change',{
-                        value:this.value,
-                        checked:checked
-                    })
-                }
-                else{
-                    this.$emit('change',checked)
-                }
+            set(val){
+                this.$emit('input',val)
+                this.$emit('change',val)
             }
         }
-    },
-    created(){
-        
     }
 }
 </script>

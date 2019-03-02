@@ -1,41 +1,10 @@
 <template>
   <div id="app">
-    <ui-button @click="loading = !loading" :loading="loading" type="warning">button</ui-button>
-    <ui-input v-model="value" :close="true"></ui-input>
-    <ui-input width="450px" v-model="value" :close="true">
-      <ui-button slot="append" type="primary">search</ui-button>
-    </ui-input>
-    <ui-date-picker></ui-date-picker>
-    <!-- <ui-dialog :visible.sync="dialog" title="title">
-      <div>
-        content
-      </div>
-    </ui-dialog> -->
-    <!-- <ui-switch v-model="checked" :disabled="false"></ui-switch> -->
-    <!-- <ui-radio-group v-model="checked2" :list="list"></ui-radio-group> -->
+    <!-- <ui-checkbox v-model="checked"></ui-checkbox> -->
     <ui-checkbox-group v-model="checked3">
-        <ui-checkbox v-for="(item,index) in list2" :key="index" :value="item.value" :label="item.label" :disabled="item.disabled"></ui-checkbox>
+        <ui-checkbox v-for="(item,index) in list2" :label="item.label" :value="item.value" :key="index"></ui-checkbox>
     </ui-checkbox-group>
-    <span>checked3:{{checked3}}</span>
-    <ui-select :list="list2" v-model="selected"></ui-select>
-    <div>checked2:{{checked2}}</div>
-    <ui-tabs v-model="curTab">
-        <ui-tab-pane name="likaiqiang" :label="label">
-            <div>
-                content1
-            </div>
-        </ui-tab-pane>
-        <ui-tab-pane name="xunzhibin" label="xunzhibin">
-            <div>
-                content2
-            </div>
-        </ui-tab-pane>
-        <ui-tab-pane name="shikefeng" label="shikefeng">
-            <div>
-                content3
-            </div>
-        </ui-tab-pane>
-    </ui-tabs>
+    <div>{{checked3}}</div>
     <ui-table :columns="columns" :dataSource="tableData"></ui-table>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
   </div>
@@ -48,6 +17,7 @@ import "@/components/datePicker/index.js";
 import "@/components/dialog/index.js";
 import '@/components/switch/index.js'
 import '@/components/radio-group/index.js'
+import '@/components/checkbox/index.js'
 import '@/components/checkbox-group/index.js'
 import '@/components/select/index.js'
 import '@/components/tabs/index.js'
@@ -60,7 +30,7 @@ export default {
       loading: false,
       value: "hello",
       dialog: true,
-      checked: false,
+      checked: true,
       checked2: '2',
       list: [
         {
