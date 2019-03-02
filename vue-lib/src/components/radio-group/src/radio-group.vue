@@ -1,25 +1,20 @@
 <template>
     <div class="dib">
-        <div class="dib" v-for="(item,index) in ls" :key="index">
-            <input
-                ref="input"
-                type="radio"
-                :id="item.id"
-                :disabled="item.disabled"
-                :value="item.value"
-                v-model="val"
-            >
-            <label
-                :for="item.id"
-                class="ui-radio"
-            ></label>
-            <label :for="item.id">{{item.label}}</label>
-        </div>
+        <ui-radio 
+            v-for="(item,index) in ls" 
+            :key="index"
+            :value="item.value"
+            :disabled="item.disabled"
+            @change="changeSelect"
+            :selected="value"
+        >    
+        </ui-radio>
     </div>
 </template>
 
 <script>
-import { createId } from "@/utils/tools";
+import Radio from '../../radio/index.js'
+
 export default {
     name: "ui-radio-group",
     props: {
@@ -33,20 +28,20 @@ export default {
         }
     },
     computed: {
-        val: {
-            get() {
-                return this.value;
-            },
-            set(val) {
-                this.$emit("input", val);
-            }
-        },
         ls() {
             var arr = this.list.slice();
             arr.forEach(item => {
                 this.$set(item, "id", createId());
             });
             return arr;
+        }
+    },
+    components:{
+        [Radio.name]:Radio
+    },
+    methods:{
+        changeSelect(val){
+            this.$emit('input',val)
         }
     }
 };
