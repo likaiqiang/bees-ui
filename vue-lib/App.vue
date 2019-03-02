@@ -18,7 +18,7 @@
     </ui-checkbox-group>
     <span>checked3:{{checked3}}</span>
     <ui-select :list="list2" v-model="selected"></ui-select>
-    <div>{{checked2}}</div>
+    <div>checked2:{{checked2}}</div>
     <ui-tabs v-model="curTab">
         <ui-tab-pane name="likaiqiang" :label="label">
             <div>
@@ -91,7 +91,7 @@ export default {
               value:'4'
           }
       ],
-      checked3:['1','4'],
+      checked3:['1','4','3'],
       selected:'3',
       curTab:'likaiqiang',
       tableData:[

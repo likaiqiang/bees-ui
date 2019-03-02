@@ -1,12 +1,20 @@
 <template>
     <div class="dib">
-        <ui-checkbox v-for="(item,index) in list" :key="index" :label="item.label" :_value="item.value" :value="value.indexOf(item.value)!=-1" @input="changeSelect" :disabled="item.disabled"></ui-checkbox>
+        <ui-checkbox 
+            v-for="(item,index) in list" 
+            :key="index" :label="item.label" 
+            :value="item.value"
+            :disabled="item.disabled"
+            @change="changeSelect"
+            :selected="value">
+        </ui-checkbox>
     </div>
 </template>
 
 <script>
 import { createId } from "@/utils/tools";
 import checkbox from '../../checkbox/index.js'
+import bus from '@/utils/bus.js'
 export default {
     data(){
         return {
@@ -32,14 +40,15 @@ export default {
                         disabled:item.componentOptions.propsData.disabled
                     };
                 });
-        }
+        } 
     },
     methods:{
-        changeSelect({value,_value}){
-            var newArray = this.value.slice()
-            var index = this.value.indexOf(_value)
+        changeSelect(o){
+            var {checked,value} = o,
+                newArray = this.value.slice(),
+                index = this.value.indexOf(value)
             if(index !== -1){
-                if(!value){
+                if(!checked){
                     newArray.splice(index,1)
                 }
                 else{
@@ -47,7 +56,7 @@ export default {
                 }
             }
             else{
-                newArray.push(_value)
+                newArray.push(value)
             }
             this.$emit('input',newArray)
         }

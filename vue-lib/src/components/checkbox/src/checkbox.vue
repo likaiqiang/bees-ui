@@ -3,8 +3,9 @@
         <input
             type="checkbox"
             :id="id"
-            v-model="val"
+            :value="value"
             :disabled="disabled"
+            v-model="isChecked"   
         >
         <label
             :for="id"
@@ -25,11 +26,7 @@ export default {
     },
     props:{
         value:{
-            required:true,
-            type:Boolean
-        },
-        _value:{
-            
+            required:true
         },
         label:{
             
@@ -37,20 +34,32 @@ export default {
         disabled:{
             type:Boolean,
             default:false
+        },
+        selected:{
+            type:Array,
+            default:()=>{
+                return []
+            }
         }
     },
     computed:{
-        val:{
+        isChecked:{
             get(){
-                return this.value
+                if( this.selected.length){
+                    return this.selected.indexOf(this.value) !== -1
+                }
+                else return false
             },
-            set(val){
-                this.$emit('input',{
-                    value:val,
-                    _value:this._value
+            set(checked){
+                this.$emit('change',{
+                    value:this.value,
+                    checked:checked
                 })
             }
         }
+    },
+    created(){
+        
     }
 }
 </script>
