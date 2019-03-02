@@ -44,21 +44,26 @@ export default {
     },
     methods:{
         changeSelect(o){
-            var {checked,value} = o,
-                newArray = this.value.slice(),
-                index = this.value.indexOf(value)
-            if(index !== -1){
-                if(!checked){
-                    newArray.splice(index,1)
-                }
-                else{
-
-                }
+            if(typeof o === 'boolean'){
+                this.$emit('input',o)
             }
             else{
-                newArray.push(value)
+                var {checked,value} = o,
+                    newArray = this.value.slice(),
+                    index = this.value.indexOf(value)
+                if(index !== -1){
+                    if(!checked){
+                        newArray.splice(index,1)
+                    }
+                    else{
+
+                    }
+                }
+                else{
+                    newArray.push(value)
+                }
+                this.$emit('input',newArray)
             }
-            this.$emit('input',newArray)
         }
     },
     components:{

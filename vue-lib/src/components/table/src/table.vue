@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import '../../checkbox/index.js'
+import checkbox from  '../../checkbox/index.js'
 export default {
     name: "ui-table",
     props: {
@@ -34,7 +34,14 @@ export default {
             type: Array,
             required: true
         }
-    }
+    },
+    data(){
+        
+    },
+    components:{
+        checkbox
+    },
+    
 };
 </script>
 

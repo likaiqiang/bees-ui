@@ -26,7 +26,7 @@ export default {
     },
     props:{
         value:{
-            required:true
+            
         },
         label:{
             
@@ -36,25 +36,28 @@ export default {
             default:false
         },
         selected:{
-            type:Array,
-            default:()=>{
-                return []
-            }
+            type:[Array,Boolean],
+            default:false
         }
     },
     computed:{
         isChecked:{
             get(){
-                if( this.selected.length){
+                if( this.selected instanceof Array){
                     return this.selected.indexOf(this.value) !== -1
                 }
-                else return false
+                else return selected
             },
             set(checked){
-                this.$emit('change',{
-                    value:this.value,
-                    checked:checked
-                })
+                if(this.selected instanceof Array){
+                    this.$emit('change',{
+                        value:this.value,
+                        checked:checked
+                    })
+                }
+                else{
+                    this.$emit('change',checked)
+                }
             }
         }
     },
