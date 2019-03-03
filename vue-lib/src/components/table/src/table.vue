@@ -7,7 +7,7 @@
                         <th v-if="columns[0].type=='section'">
                             <ui-checkbox  @change="checkedAll" v-model="isAllChecked"></ui-checkbox>
                         </th>
-                        <th v-for="(item,index) in columns" :key="index">{{item.title}}</th>
+                        <th v-for="(item,index) in rColumns" :key="index" :colspan="item.colspan">{{item.title}}</th>
                         <th v-if="height!='auto'" :style="{width:scrollBarWidth()+'px',padding:0}"></th>
                     </tr>
                 </thead>
@@ -21,7 +21,7 @@
                             <td v-if="columns[0].type=='section'">
                                 <ui-checkbox :disabled="item._disabled" @change="checkedItem($event,item)" v-model="item._checked"></ui-checkbox>
                             </td>
-                            <td v-for="(column,i) in columns" :key="i">{{item[column.key]}}</td>
+                            <td v-for="(column,i) in rColumns" :key="i" :colspan="column.colspan">{{item[column.key]}}</td>
                         </template>
                     </tr>
                 </tbody>
@@ -90,6 +90,11 @@ export default {
                     })
                 }
             }
+        },
+        rColumns(){
+            return this.columns.filter(item=>{
+                return typeof item.type === 'undefined'
+            })
         }
     }
     

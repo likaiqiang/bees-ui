@@ -130,7 +130,8 @@ export default {
           },
           {
               title:'ID',
-              key:'id'
+              key:'id',
+              colspan:'2'
           },
           {
               title:'姓名',
