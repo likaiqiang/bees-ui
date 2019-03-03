@@ -19,6 +19,7 @@ input[type=checkbox] {
 	z-index: -1;
 }
 
+
 /* 无绝对定位的模拟生成实现 */
 .ui-checkbox {
 	display: inline-block;
@@ -76,7 +77,8 @@ input[type=checkbox] {
 }
 
 :disabled + .ui-checkbox {
-	opacity: .38;
+    opacity: .38;
+    cursor: not-allowed;
 }
 
 /* error */

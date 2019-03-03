@@ -54,6 +54,7 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
+    "loaders.css": "^0.1.2",
     "lodash": "^4.17.11",
     "resize-observer-polyfill": "^1.5.1",
     "velocity-animate": "^1.5.2",

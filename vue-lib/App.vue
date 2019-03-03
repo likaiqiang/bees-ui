@@ -5,8 +5,10 @@
         <ui-checkbox v-for="(item,index) in list2" :label="item.label" :value="item.value" :key="index"></ui-checkbox>
     </ui-checkbox-group>
     <div>{{checked3}}</div>
-    <ui-table :columns="columns" :dataSource="tableData"></ui-table>
+    <ui-table height="300px" :columns="columns" :dataSource="tableData"></ui-table>
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
+    <ui-button @click="all(true)">全选</ui-button>
+    <ui-button @click="all(false)">反选</ui-button>
   </div>
 </template>
 <script>
@@ -76,9 +78,47 @@ export default {
               id:2,
               name:'寻志斌',
               age:24,
-              gender:'男'
+              gender:'男',
+              _disabled:true
           },{
               id:3,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          },
+          {
+              id:4,
+              name:'likaiqiang',
+              age:24,
+              gender:'男',
+              _checked:true
+          },
+          {
+              id:5,
+              name:'寻志斌',
+              age:24,
+              gender:'男',
+              _disabled:true
+          },{
+              id:6,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          },{
+              id:7,
+              name:'likaiqiang',
+              age:24,
+              gender:'男',
+              _checked:true
+          },
+          {
+              id:8,
+              name:'寻志斌',
+              age:24,
+              gender:'男',
+              _disabled:true
+          },{
+              id:9,
               name:'shikefeng',
               age:24,
               gender:'男'
@@ -115,6 +155,18 @@ export default {
                 <span>2</span>
               </div>
           )
+      },
+      all(status){
+          if(status){
+              this.tableData.forEach(item=>{
+                this.$set(item,'_checked',true)
+            })
+          }
+          else{
+              this.tableData.forEach(item=>{
+                this.$set(item,'_checked',false)
+            })
+          }
       }
   }
 };

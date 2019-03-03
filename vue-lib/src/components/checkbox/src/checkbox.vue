@@ -37,7 +37,9 @@ export default {
     computed:{
         val:{
             get(){
-                return this.value
+                if(this.disabled)
+                    return false
+                else return this.value
             },
             set(val){
                 this.$emit('input',val)

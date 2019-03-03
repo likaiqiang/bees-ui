@@ -1,28 +1,38 @@
 <template>
-    <table class="ui-table">
-        <thead>
-            <tr>
-                <th v-if="columns[0].type=='section'">
-                    <ui-checkbox @change="checkedAll" v-model="isAllChecked"></ui-checkbox>
-                </th>
-                <th v-for="(item,index) in columns" :key="index">{{item.title}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="(item,index) in dataSource" :key="index">
-                <template>
-                    <td v-if="columns[0].type=='section'">
-                        <ui-checkbox @change="checkedItem($event,item)" v-model="item._checked"></ui-checkbox>
-                    </td>
-                    <td v-for="(column,i) in columns" :key="i">{{item[column.key]}}</td>
-                </template>
-            </tr>
-        </tbody>
-    </table>
+    <div class="ui-table-wrapper" :style="{height:this.height}">
+        <div class="ui-table-head">
+            <table class="ui-table">
+                <thead>
+                    <tr>
+                        <th v-if="columns[0].type=='section'">
+                            <ui-checkbox  @change="checkedAll" v-model="isAllChecked"></ui-checkbox>
+                        </th>
+                        <th v-for="(item,index) in columns" :key="index">{{item.title}}</th>
+                        <th v-if="height!='auto'" :style="{width:scrollBarWidth()+'px',padding:0}"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="ui-table-body">
+            <table class="ui-table">
+                <tbody>
+                    <tr v-for="(item,index) in dataSource" :key="index">
+                        <template>
+                            <td v-if="columns[0].type=='section'">
+                                <ui-checkbox :disabled="item._disabled" @change="checkedItem($event,item)" v-model="item._checked"></ui-checkbox>
+                            </td>
+                            <td v-for="(column,i) in columns" :key="i">{{item[column.key]}}</td>
+                        </template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </template>
 
 <script>
 import checkbox from  '../../checkbox/index.js'
+import scrollBarWidth from '@/utils/scrollbar-width.js'
 export default {
     name: "ui-table",
     props: {
@@ -33,6 +43,10 @@ export default {
         dataSource: {
             type: Array,
             required: true
+        },
+        height:{
+            type:String,
+            default:'auto'
         }
     },
     data(){
@@ -48,8 +62,12 @@ export default {
             this.$emit('select-all',this.dataSource)
         },
         checkedItem(e,item){
+            if(e){
+                this.$emit('select',this.dataSource.filter(item=>Boolean(item._checked)))
+            }
             this.$emit('select-change',item)
-        }
+        },
+        scrollBarWidth
     },
     computed:{
         isAllChecked:{
