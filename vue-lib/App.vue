@@ -69,7 +69,8 @@ export default {
               id:1,
               name:'likaiqiang',
               age:24,
-              gender:'男'
+              gender:'男',
+              _checked:true
           },
           {
               id:2,

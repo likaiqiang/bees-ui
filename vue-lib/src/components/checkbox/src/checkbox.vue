@@ -24,7 +24,7 @@ export default {
     },
     props:{
         value:{
-            required:true
+            default:false
         },
         label:{
             default:''
