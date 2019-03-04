@@ -14,7 +14,7 @@
             </table>
         </div>
         <div class="ui-table-body">
-            <table class="ui-table">
+            <table  class="ui-table">
                 <tbody>
                     <tr v-for="(item,index) in dataSource" :key="index">
                         <template>

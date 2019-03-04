@@ -1,20 +1,18 @@
 <template>
-  <div class="ui-dialog-container" ref="dialogContainer"  v-show="visible">
-    <div class="ui-dialog" ref="dialog" v-click-outside="closeDialog">
-      <div class="ui-dialog-header">
-        <p class="ui-dialog-title">{{title}}</p>
-        <ui-icon type="md-close" class="ui-dialog-close" @click="closeDialog()"></ui-icon>
+  <div class="ui-dialog-container" vue-dom-portal  v-show="visible">
+    <div class="ui-dialog">
+      <ui-icon type="md-close" class="ui-dialog-close ESC" @click="closeDialog()"></ui-icon>
+      <div class="ui-dialog-title" role="heading">{{title}}</div>
+      <div class="ui-dialog-body">
+          <slot></slot>
       </div>
-      <dialog-body>
-        <slot></slot>
-      </dialog-body>
       <div class="ui-dialog-footer">
         <ui-button 
           v-for="(btn,i) in buttons" 
           :key="i" 
-          :type="i ? (btn.type || '') : (btn.type || 'primary')"
+          :type="i ? (btn.type || 'primary') : (btn.type || '')"
           @click="clickBtn(i)">
-          {{i ? (btn.value || '取消') : (btn.value || '确定')}}
+          {{i ? (btn.value || '确定') : (btn.value || '取消')}}
         </ui-button>
       </div>
     </div>
@@ -24,8 +22,6 @@
 <script>
 import uiIcon from "@/components/icon";
 import uiButton from "@/components/button";
-import uiInput from "@/components/input";
-import dialogBody from './dialogBody.vue'
 import { isEmptyObject } from "@/utils/tools.js";
 import ClickOutside from '@/directives/clickoutside.js'
 
@@ -54,7 +50,8 @@ export default {
     ClickOutside
   },
   components:{
-    dialogBody
+    uiIcon,
+    uiButton
   },
   props: {
     title: {

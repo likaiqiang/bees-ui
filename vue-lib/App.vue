@@ -9,9 +9,18 @@
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
     <ui-button @click="all(true)">全选</ui-button>
     <ui-button @click="all(false)">反选</ui-button>
+    <ui-button type="primary" @click="openDialog">open</ui-button>
+    <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
+        <div>我是测试内容</div>
+    </ui-dialog>
   </div>
 </template>
 <script>
+import Vue from 'vue'
+import DomPortal from 'vue-dom-portal'
+Vue.use(DomPortal)
+
+
 import Button from "@/components/button/index.js";
 import Input from "@/components/input/index.js";
 import Icon from "@/components/icon/index.js";
@@ -24,6 +33,7 @@ import '@/components/checkbox-group/index.js'
 import '@/components/select/index.js'
 import '@/components/tabs/index.js'
 import '@/components/table/index.js'
+import '@/components/dialog/index.js'
 
 export default {
   name: "app",
@@ -34,6 +44,7 @@ export default {
       dialog: true,
       checked: true,
       checked2: '2',
+      dialogVisible:false,
       list: [
         {
           label: "男”·",
@@ -168,6 +179,9 @@ export default {
                 this.$set(item,'_checked',false)
             })
           }
+      },
+      openDialog(){
+          this.dialogVisible = true
       }
   }
 };
