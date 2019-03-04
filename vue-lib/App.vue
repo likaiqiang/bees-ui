@@ -14,6 +14,7 @@
         <div>我是测试内容</div>
     </ui-dialog>
     <ui-button @click="showDialog">show dialog</ui-button>
+    <ui-loading></ui-loading>
   </div>
 </template>
 <script>
@@ -35,6 +36,7 @@ import '@/components/select/index.js'
 import '@/components/tabs/index.js'
 import '@/components/table/index.js'
 import '@/components/dialog/index.js'
+import '@/components/loading/index.js'
 
 export default {
   name: "app",
