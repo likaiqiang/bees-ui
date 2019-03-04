@@ -13,6 +13,7 @@
     <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
         <div>我是测试内容</div>
     </ui-dialog>
+    <ui-button @click="showDialog">show dialog</ui-button>
   </div>
 </template>
 <script>
@@ -182,6 +183,11 @@ export default {
       },
       openDialog(){
           this.dialogVisible = true
+      },
+      showDialog(){
+          this.$Modal({
+              title:"我是动态添加的"
+          })
       }
   }
 };

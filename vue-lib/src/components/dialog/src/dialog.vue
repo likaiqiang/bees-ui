@@ -4,7 +4,10 @@
       <ui-icon type="md-close" class="ui-dialog-close ESC" @click="closeDialog()"></ui-icon>
       <div class="ui-dialog-title" role="heading">{{title}}</div>
       <div class="ui-dialog-body">
-          <slot></slot>
+          <template v-if="typeof content !== 'function'">
+              <slot></slot>
+          </template>
+          <Render v-else :render="content"></Render>
       </div>
       <div class="ui-dialog-footer">
         <ui-button 
@@ -24,6 +27,7 @@ import uiIcon from "@/components/icon";
 import uiButton from "@/components/button";
 import { isEmptyObject } from "@/utils/tools.js";
 import ClickOutside from '@/directives/clickoutside.js'
+import Render from '@/utils/render.js'
 
 export default {
   name: "ui-dialog",
@@ -51,7 +55,8 @@ export default {
   },
   components:{
     uiIcon,
-    uiButton
+    uiButton,
+    Render
   },
   props: {
     title: {
@@ -67,6 +72,9 @@ export default {
     visible:{
       type:Boolean,
       default:false
+    },
+    content:{
+        
     }
   },
 };
