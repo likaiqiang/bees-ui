@@ -1,58 +1,51 @@
 <template>
-    <div :class="classes" :aria-label="label" role="message" tabindex="0">
-        <i class="ui-message-icon">&nbsp;</i>
-        <span class="ui-message-text">{{message}}</span>
+    <div
+        :class="classes"
+    >
+        <template v-if="typeof content !== 'function'">
+            <i class="ui-lightip-icon">&nbsp;</i>
+            <span class="ui-lightip-text">{{content}}</span>
+        </template>
+        <Render v-else :render="content"></Render>
     </div>
 </template>
 
 <script>
-import { outerWidth } from "@/js/utils/tools.js";
+import Render from '@/utils/render.js'
 export default {
-  name: "ui-message",
-  props: {
-    type: {
-      type: String,
-      default: "success",
-      validator: function(val) {
-        return ["success", "error"].indexOf(val) != -1;
-      }
+    name:'ui-message',
+    props:{
+        content:{
+            type:[String,Function],
+            required:true
+        },
+        type:{
+            type:String,
+            default:'success',
+            validator:function(val){
+                return ['success','error'].indexOf(val) !== -1
+            }
+        },
+        duration:{
+            type:Number,
+            default:1000
+        }
     },
-    message: {
-      type: String,
-      required: true
+    created(){
+        setTimeout(()=>{
+            this.$emit('close')
+        },this.duration)
     },
-    time: {
-      type: Number,
-      default: 3000
+    components:{
+        Render
+    },
+    computed:{
+        classes(){
+            return ['ui-lightip','ui-lightip-'+this.type]
+        }
     }
-  },
-  mounted() {
-    var message = this.$el;
-    message.style.left = "50%";
-
-    this.$nextTick(() => {
-      message.style.marginLeft = outerWidth(message) * -0.5 + "px"
-    });
-    setTimeout(() => {
-      this.$destroy();
-      this.$el.remove();
-    }, this.time);
-  },
-  computed: {
-    classes() {
-      return ["ui-message", this.type && "ui-message-" + this.type];
-    },
-    label() {
-      const config = {
-        success: "操作成功",
-        error: "操作失败"
-      };
-      return config[this.type];
-    }
-  }
 };
 </script>
 
-<style lang="scss">
-@import "../../../css/message.scss";
+<style>
 </style>

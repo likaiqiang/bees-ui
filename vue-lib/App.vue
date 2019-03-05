@@ -14,6 +14,7 @@
         <div>我是测试内容</div>
     </ui-dialog>
     <ui-button @click="showDialog">show dialog</ui-button>
+    <ui-button @click="showMessage">show message</ui-button>
     <ui-loading></ui-loading>
   </div>
 </template>
@@ -37,7 +38,7 @@ import '@/components/tabs/index.js'
 import '@/components/table/index.js'
 import '@/components/dialog/index.js'
 import '@/components/loading/index.js'
-
+import '@/components/message/index.js'
 export default {
   name: "app",
   data() {
@@ -189,6 +190,12 @@ export default {
       showDialog(){
           this.$Modal({
               title:"我是动态添加的"
+          })
+      },
+      showMessage(){
+          this.$Message({
+              type:'error',
+              content:'修改失败'
           })
       }
   }
