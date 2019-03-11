@@ -1,5 +1,5 @@
 <template>
-    <div class="dib" ref="tooltip">
+    <div class="dib" ref="tooltip" v-click-outside="hide">
         <div
             :class="classes"
             v-dom-portal
@@ -17,8 +17,7 @@
         </div>
         <div
             class="dib"
-            ref="trigger"
-            
+            ref="trigger" 
         >
             <slot></slot>
         </div>
@@ -48,7 +47,7 @@ export default {
     props: {
         align: {
             type: String,
-            default: "center",
+            default: "right",
             validator(val) {
                 return (
                     ["center", "rotate", "left", "right", "reverse"].indexOf(
@@ -83,7 +82,7 @@ export default {
                         this.getAttr(before, "padding-left") || 0;
             } else if (this.align == "right") {
                 offsetX =
-                    -0.5 * this.getAttr(before, "width") -
+                    0.5 * this.getAttr(before, "width") -
                         this.getAttr(before, "padding-left") || 0;
             } else if (this.align == "rotate") {
                 position = "6-8";
@@ -94,7 +93,7 @@ export default {
             }
 
             if (this.align != "rotate" && this.align != "reverse") {
-                after.style.left = offsetX;
+                after.style.left = offsetX + 'px';
             }
 
             Follow(this.$refs.trigger, this.$refs.content, {
@@ -105,10 +104,12 @@ export default {
                 position: position,
                 edgeAdjust: false
             });
+        },
+        hide(){
+            this.visible = false
         }
     },
     mounted() {
-        
         if(this.type=='click'){
             this.$refs.trigger.addEventListener('click',()=>{
                 this.visible = true

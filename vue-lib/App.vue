@@ -16,7 +16,7 @@
     <ui-button @click="showDialog">show dialog</ui-button>
     <ui-button @click="showMessage">show message</ui-button>
     <!-- <ui-loading></ui-loading> -->
-    <ui-tooltip content="123" type="hover">
+    <ui-tooltip content="123承认发热个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf" type="click">
         <ui-button type="success">hover me</ui-button>
     </ui-tooltip>
   </div>
