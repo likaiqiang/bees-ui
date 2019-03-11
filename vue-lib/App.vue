@@ -149,11 +149,12 @@ export default {
           {
               title:'ID',
               key:'id',
-              colspan:'2'
+              width:100
           },
           {
               title:'姓名',
-              key:'name'
+              key:'name',
+              align:'center'
           },
           {
               title:'性别',

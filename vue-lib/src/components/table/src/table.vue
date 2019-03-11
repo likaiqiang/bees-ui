@@ -2,12 +2,15 @@
     <div class="ui-table-wrapper" :style="{height:this.height}">
         <div class="ui-table-head">
             <table class="ui-table">
+                <colgroup>
+                    <col v-for="(item,index) in columns" :key="index" :width="item.width"></col>
+                </colgroup>
                 <thead>
                     <tr>
-                        <th v-if="columns[0].type=='section'">
+                        <th v-if="columns[0].type=='section'" :style="{'text-align':columns[0].align}">
                             <ui-checkbox  @change="checkedAll" v-model="isAllChecked"></ui-checkbox>
                         </th>
-                        <th v-for="(item,index) in rColumns" :key="index" :colspan="item.colspan">{{item.title}}</th>
+                        <th v-for="(item,index) in rColumns" :key="index" :colspan="item.colspan" :style="{'text-align':item.align}">{{item.title}}</th>
                         <th v-if="height!='auto'" :style="{width:scrollBarWidth()+'px',padding:0}"></th>
                     </tr>
                 </thead>
@@ -15,13 +18,16 @@
         </div>
         <div class="ui-table-body">
             <table  class="ui-table">
+                <colgroup>
+                    <col v-for="(item,index) in columns" :key="index" :width="item.width"></col>
+                </colgroup>
                 <tbody>
                     <tr v-for="(item,index) in dataSource" :key="index">
                         <template>
-                            <td v-if="columns[0].type=='section'">
+                            <td v-if="columns[0].type=='section'" :style="{'text-align':columns[0].align}">
                                 <ui-checkbox :disabled="item._disabled" @change="checkedItem($event,item)" v-model="item._checked"></ui-checkbox>
                             </td>
-                            <td v-for="(column,i) in rColumns" :key="i" :colspan="column.colspan">{{item[column.key]}}</td>
+                            <td v-for="(column,i) in rColumns" :key="i" :colspan="column.colspan" :style="{'text-align':column.align}">{{item[column.key]}}</td>
                         </template>
                     </tr>
                 </tbody>
