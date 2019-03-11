@@ -19,6 +19,32 @@
 **/
 import _ from 'lodash'
 
+function getHiddenElement(ele){
+    var display = getComputedStyle(ele).display
+    var width,height,top,left
+    if(display === 'none'){
+        ele.style.display = 'block'
+        ele.style.visibility = 'hidden'
+        width = ele.getBoundingClientRect().width
+        height = ele.getBoundingClientRect().height
+        top = ele.getBoundingClientRect().top 
+        left = ele.getBoundingClientRect().left
+        ele.style.display = 'none'       
+    }
+    else{
+        width = ele.getBoundingClientRect().width
+        height = ele.getBoundingClientRect().height
+        top = ele.getBoundingClientRect().top 
+        left = ele.getBoundingClientRect().left
+    }
+    return {
+        width,
+        height,
+        top,
+        left
+    }
+}
+
 var follow = function (trigger, target, options) {
     var defaults = {
         offsets: {
@@ -36,8 +62,8 @@ var follow = function (trigger, target, options) {
     var triL, triT, tarL, tarT;
     var triH = 0;
     var triW = 0;
-    var tarH = target.getBoundingClientRect().height
-    var tarW = target.getBoundingClientRect().width
+    var tarH = getHiddenElement(target).height
+    var tarW = getHiddenElement(target).width
     //缓存目标对象高度，宽度，提高鼠标跟随时显示性能，元素隐藏时缓存清除
 
     var st = window.scrollY;
@@ -51,12 +77,12 @@ var follow = function (trigger, target, options) {
 
     var position = params.position;
 
-    triH = trigger.getBoundingClientRect().height;
-    triW = trigger.getBoundingClientRect().width;
+    triH = getHiddenElement(trigger).height;
+    triW = getHiddenElement(trigger).width;
     // triL = pos.left;
     // triT = pos.top;
-    triL = trigger.getBoundingClientRect().left + window.scrollX
-    triT = trigger.getBoundingClientRect().top + window.scrollY
+    triL = getHiddenElement(trigger).left + window.scrollX
+    triT = getHiddenElement(trigger).top + window.scrollY
 
     // 合法的位置关系数据
     var arrLegalPos = ['4-1', '1-4', '5-7', '2-3', '2-1', '6-8', '3-4', '4-3', '8-6', '1-2', '7-5', '3-2'];
@@ -90,8 +116,8 @@ var follow = function (trigger, target, options) {
             position = getComputedStyle(dom).position
         }
         return {
-            top:dom.getBoundingClientRect().top + window.scrollY,
-            left:dom.getBoundingClientRect().left + window.scrollX
+            top:getHiddenElement(dom).top + window.scrollY,
+            left:getHiddenElement(dom).left + window.scrollX
         }
     }
     // 确定定位方位，是上下左右的哪个

@@ -15,14 +15,16 @@
     </ui-dialog>
     <ui-button @click="showDialog">show dialog</ui-button>
     <ui-button @click="showMessage">show message</ui-button>
-    <ui-loading></ui-loading>
+    <!-- <ui-loading></ui-loading> -->
+    <ui-tooltip content="123" type="hover">
+        <ui-button type="success">hover me</ui-button>
+    </ui-tooltip>
   </div>
 </template>
 <script>
 import Vue from 'vue'
-import DomPortal from 'vue-dom-portal'
-Vue.use(DomPortal)
-
+import portal from '@/directives/portal.js'
+Vue.directive('dom-portal',portal)
 
 import Button from "@/components/button/index.js";
 import Input from "@/components/input/index.js";
@@ -39,6 +41,7 @@ import '@/components/table/index.js'
 import '@/components/dialog/index.js'
 import '@/components/loading/index.js'
 import '@/components/message/index.js'
+import '@/components/tooltip/index.js'
 export default {
   name: "app",
   data() {
