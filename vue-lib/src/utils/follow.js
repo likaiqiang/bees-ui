@@ -29,6 +29,7 @@ function getHiddenElement(ele){
         height = ele.getBoundingClientRect().height
         top = ele.getBoundingClientRect().top 
         left = ele.getBoundingClientRect().left
+        ele.style.visibility = 'visible'
         ele.style.display = 'none'       
     }
     else{
