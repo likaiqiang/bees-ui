@@ -4,7 +4,7 @@
             :class="classes"
             v-dom-portal
             ref="content"
-            v-show="visible"
+            v-show="visib"
         >
             <span
                 class="ui-tips-before"
@@ -35,13 +35,20 @@ export default {
     },
     data() {
         return {
-            visible: false,
             isHoverContent:false
         };
     },
     computed: {
         classes() {
             return ["ui-tips-x", "ui-tips-" + this.align];
+        },
+        visib:{
+            get(){
+                return this.visible
+            },
+            set(v){
+                this.$emit('update:visible',v)
+            }
         }
     },
     props: {
@@ -66,6 +73,10 @@ export default {
             validator(val) {
                 return ["hover", "click"].indexOf(val) !== -1;
             }
+        },
+        visible:{
+            type:Boolean,
+            default:false
         }
     },
     methods: {
@@ -106,13 +117,13 @@ export default {
             });
         },
         hide(){
-            this.visible = false
+            this.visib = false
         }
     },
     mounted() {
         if(this.type=='click'){
             this.$refs.trigger.addEventListener('click',()=>{
-                this.visible = true
+                this.visib = true
                 this.$nextTick(()=>{
                     this.follow()
                 })
@@ -120,7 +131,7 @@ export default {
         }
         if(this.type=="hover"){
             this.$refs.trigger.addEventListener('mouseenter',()=>{
-                this.visible = true
+                this.visib = true
                 this.$nextTick(()=>{
                     this.follow()
                 })
@@ -128,7 +139,7 @@ export default {
             this.$refs.trigger.addEventListener('mouseleave',()=>{
                 setTimeout(()=>{
                     if(!this.isHoverContent)
-                        this.visible = false
+                        this.visib = false
                 },0)
             })
             this.$refs.content.addEventListener('mouseenter',()=>{
@@ -136,7 +147,7 @@ export default {
             })
             this.$refs.content.addEventListener('mouseleave',()=>{
                 this.isHoverContent = false
-                this.visible = false
+                this.visib = false
             })
         }
     },
