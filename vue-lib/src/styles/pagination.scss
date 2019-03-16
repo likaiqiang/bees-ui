@@ -49,13 +49,8 @@ a.ui-page:hover {
  margin-top: 3px;
 }
 
-.ui-page-prev,
 .ui-page-next {
-  background: url(#{$urlImage}/Pagination/icons-prev-next.png) no-repeat;
-  background: none, none;
-  text-align: center;
-  fill: currentColor;
-  overflow: hidden;
+  transform: rotate(180deg);
 }
 .ui-page-next svg {
   -webkit-transform: scaleX(-1);

@@ -5,7 +5,7 @@
         <ui-checkbox v-for="(item,index) in list2" :label="item.label" :value="item.value" :key="index"></ui-checkbox>
     </ui-checkbox-group>
     <div>{{checked3}}</div>
-    <ui-table height="300px" :columns="columns" :dataSource="tableData"></ui-table>
+    <!-- <ui-table height="300px" :columns="columns" :dataSource="tableData"></ui-table> -->
     <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
     <ui-button @click="all(true)">全选</ui-button>
     <ui-button @click="all(false)">反选</ui-button>
@@ -20,6 +20,7 @@
         <ui-button type="success">hover me</ui-button>
     </ui-tooltip>
     <ui-slider v-model="slider"></ui-slider>
+    <ui-pagination :total="100" :curPage="4"></ui-pagination>
   </div>
 </template>
 <script>
@@ -44,6 +45,7 @@ import '@/components/loading/index.js'
 import '@/components/message/index.js'
 import '@/components/tooltip/index.js'
 import '@/components/slider/index.js'
+import '@/components/pagination/index.js'
 export default {
   name: "app",
   data() {
