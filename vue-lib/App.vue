@@ -20,7 +20,7 @@
         <ui-button type="success">hover me</ui-button>
     </ui-tooltip>
     <ui-slider v-model="slider"></ui-slider>
-    <ui-pagination :total="100" :curPage.sync="curPage"></ui-pagination>
+    <ui-pagination :total="100" :curPage.sync="curPage" :every="20"></ui-pagination>
   </div>
 </template>
 <script>

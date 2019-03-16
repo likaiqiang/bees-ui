@@ -35,14 +35,14 @@ export default {
               <ui-icon size="25" type="ios-arrow-back"></ui-icon>
             </a>
           )
-      if(curPage <1){
+      if(curPage <=1){
         prevButton = (
           <span class="ui-page ui-page-prev">
             <ui-icon size="25" type="ios-arrow-back"></ui-icon>
           </span>
         )
       }
-      if(curPage>this.total){
+      if(curPage>=Math.ceil(this.total/this.every)){
         nextButton = (
           <span class="ui-page ui-page-next">
             <ui-icon size="25" type="ios-arrow-back"></ui-icon>
@@ -58,7 +58,13 @@ export default {
               if(this.curPage==page)
                 return <span class="ui-page ui-page-current">{page}</span>
               else 
-                return <span class="ui-page">{page}</span>
+                if('...'==page) return <span class="ui-page ui-page-ellipsis">...</span>
+                else
+                  return <a href="javascript:;" class="ui-page" onClick={
+                    ()=>{
+                      this.pageClickHandler(page)
+                    }
+                  }>{page}</a>
             })
           }
           {nextButton}
@@ -80,6 +86,10 @@ export default {
       next(){
         if(this.curPage>=Math.ceil(this.total/this.every)) return 
         this.$emit('update:curPage',this.curPage+1)
+      },
+      pageClickHandler(page){
+        this.$emit('update:curPage',page)
+        this.$emit('change',page)          
       }
     },
     computed:{
