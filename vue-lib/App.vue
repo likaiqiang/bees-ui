@@ -20,7 +20,7 @@
         <ui-button type="success">hover me</ui-button>
     </ui-tooltip>
     <ui-slider v-model="slider"></ui-slider>
-    <ui-pagination :total="100" :curPage="4"></ui-pagination>
+    <ui-pagination :total="100" :curPage.sync="curPage"></ui-pagination>
   </div>
 </template>
 <script>
@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       slider:50,
+      curPage:4,
       loading: false,
       value: "hello",
       dialog: true,
