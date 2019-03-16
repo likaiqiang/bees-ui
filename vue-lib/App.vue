@@ -19,6 +19,7 @@
     <ui-tooltip content="123承认发热个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf" type="click">
         <ui-button type="success">hover me</ui-button>
     </ui-tooltip>
+    <ui-slider v-model="slider"></ui-slider>
   </div>
 </template>
 <script>
@@ -42,10 +43,12 @@ import '@/components/dialog/index.js'
 import '@/components/loading/index.js'
 import '@/components/message/index.js'
 import '@/components/tooltip/index.js'
+import '@/components/slider/index.js'
 export default {
   name: "app",
   data() {
     return {
+      slider:50,
       loading: false,
       value: "hello",
       dialog: true,
@@ -149,7 +152,8 @@ export default {
           {
               title:'ID',
               key:'id',
-              width:100
+              maxWidth:200,
+              minWidth:100
           },
           {
               title:'姓名',

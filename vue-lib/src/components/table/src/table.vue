@@ -3,14 +3,14 @@
         <div class="ui-table-head">
             <table class="ui-table">
                 <colgroup>
-                    <col v-for="(item,index) in columns" :key="index" :width="item.width"></col>
+                    <col ref="col" v-for="(item,index) in columns" :key="index" :width="item.width"></col>
                 </colgroup>
                 <thead>
                     <tr>
-                        <th v-if="columns[0].type=='section'" :style="{'text-align':columns[0].align}">
+                        <th ref="th" v-if="columns[0].type=='section'" :style="{'text-align':columns[0].align}">
                             <ui-checkbox  @change="checkedAll" v-model="isAllChecked"></ui-checkbox>
                         </th>
-                        <th v-for="(item,index) in rColumns" :key="index" :colspan="item.colspan" :style="{'text-align':item.align}">{{item.title}}</th>
+                        <th ref="th" v-for="(item,index) in rColumns" :key="index" :colspan="item.colspan" :style="{'text-align':item.align}">{{item.title}}</th>
                         <th v-if="height!='auto'" :style="{width:scrollBarWidth()+'px',padding:0}"></th>
                     </tr>
                 </thead>
@@ -57,7 +57,7 @@ export default {
     },
     data(){
         return {
-            
+           colsWidth:[] 
         }
     },
     components:{
@@ -102,8 +102,28 @@ export default {
                 return typeof item.type === 'undefined'
             })
         }
+    },
+    mounted(){
+        // this.colsWidth = this.columns.map((item,index)=>{
+        //     if(typeof item.width !=='undefined'){
+        //         return item.width
+        //     }
+        //     else{
+        //         console.log(index,this.$refs.th[index])
+        //         return parseInt(getComputedStyle(this.$refs.th[index]).width)
+        //     }
+        // })
+        // var _this = this
+        // window.addEventListener('resize',()=>{
+        //     _this.colsWidth.forEach((item,index)=>{
+        //         var col = this.$refs.col[index],
+        //             colWidth = Number(col.getAttribute('width')),
+        //             column = this.columns[index]
+                
+        //     })
+        // })
+        console.log(this.$refs.th)
     }
-    
 };
 </script>
 
