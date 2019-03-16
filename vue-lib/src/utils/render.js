@@ -5,7 +5,6 @@ export default {
         render: Function
     },
     render: (h, ctx) => {
-        console.log(ctx,this)
         return ctx.props.render(h);
     }
 };

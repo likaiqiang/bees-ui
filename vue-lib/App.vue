@@ -21,6 +21,34 @@
     </ui-tooltip>
     <ui-slider v-model="slider"></ui-slider>
     <ui-pagination :total="100" :curPage.sync="curPage" :every="20"></ui-pagination>
+    <ui-tabs v-model="curTab">
+        <ui-tab-pane name="likaiqiang" label="likaiqiang">
+            <div>
+                content1
+            </div>
+        </ui-tab-pane>
+        <ui-tab-pane name="xunzhibin" label="xunzhibin">
+            <div>
+                content2
+            </div>
+        </ui-tab-pane>
+        <ui-tab-pane name="shikefeng" label="shikefeng">
+            <div>
+                content3
+            </div>
+        </ui-tab-pane>
+    </ui-tabs>
+    <ui-swiper>
+      <ui-swiper-item>
+        <img src="http://dummyimage.com/200x100/f27999"/>
+      </ui-swiper-item>
+      <ui-swiper-item>
+        <img src="http://dummyimage.com/200x100/79bcf2" alt="">
+      </ui-swiper-item>
+      <ui-swiper-item>
+        <img src="http://dummyimage.com/200x100/e0f279" alt="">
+      </ui-swiper-item>
+    </ui-swiper>
   </div>
 </template>
 <script>
@@ -46,6 +74,7 @@ import '@/components/message/index.js'
 import '@/components/tooltip/index.js'
 import '@/components/slider/index.js'
 import '@/components/pagination/index.js'
+import '@/components/swiper/index.js'
 export default {
   name: "app",
   data() {

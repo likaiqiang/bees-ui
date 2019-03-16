@@ -13,7 +13,7 @@ export default {
       type: String
     },
     contentVisible: {
-      defaulr: true,
+      default: true,
       type: Boolean
     }
   }
