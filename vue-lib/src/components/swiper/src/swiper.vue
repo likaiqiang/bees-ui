@@ -1,8 +1,11 @@
 <template>
   <div class="ui-swiper">
     <transition-group tag="ul" name="move" class="ui-swiper-wrapper" :style="{height:maxHeight+'px'}">
-      <swiper-item  @height="getHeight(index,$event)" v-for="(item,index) in lists" :key="index" :content="item"></swiper-item>
+      <swiper-item v-show="index==currentIndex"  @height="getHeight(index,$event)" v-for="(item,index) in lists" :key="index" :content="item"></swiper-item>
     </transition-group>
+    <ul class="ui-swiper-panation">
+      <li v-for="(item,index) in lists" :key="index" @click="toggle(index)"></li>
+    </ul>
   </div>
 </template>
 
@@ -15,7 +18,8 @@ export default {
   },
   data(){
     return {
-      heights:[]
+      heights:[],
+      currentIndex:0
     }
   },
   computed:{
@@ -33,6 +37,9 @@ export default {
   methods:{
     getHeight(i,e){
       this.$set(this.heights,i,e)
+    },
+    toggle(index){
+      this.currentIndex = index
     }
   }
 }
