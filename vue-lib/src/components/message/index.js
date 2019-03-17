@@ -1,4 +1,2 @@
-import message from './src/message.js'
-import Vue from 'vue'
-Vue.use(message)
-export default message
+import Message from './src/message.js'
+export default Message

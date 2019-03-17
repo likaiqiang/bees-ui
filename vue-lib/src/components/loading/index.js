@@ -1,4 +1,3 @@
-import Loading from './src/loading'
-import Vue from 'vue'
-Vue.component(Loading.name,Loading)
+import Loading from './src/loading.vue'
+
 export default Loading

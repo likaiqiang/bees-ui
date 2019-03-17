@@ -1,80 +1,15 @@
 <template>
-  <div id="app">
-    <!-- <ui-checkbox v-model="checked"></ui-checkbox> -->
-    <ui-checkbox-group v-model="checked3">
-        <ui-checkbox v-for="(item,index) in list2" :label="item.label" :value="item.value" :key="index"></ui-checkbox>
-    </ui-checkbox-group>
-    <div>{{checked3}}</div>
-    <!-- <ui-table height="300px" :columns="columns" :dataSource="tableData"></ui-table> -->
-    <!-- <ui-radio v-model="checked" :disabled="false"></ui-radio> -->
-    <ui-button @click="all(true)">全选</ui-button>
-    <ui-button @click="all(false)">反选</ui-button>
-    <ui-button type="primary" @click="openDialog">open</ui-button>
-    <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
-        <div>我是测试内容</div>
-    </ui-dialog>
-    <ui-button @click="showDialog">show dialog</ui-button>
-    <ui-button @click="showMessage">show message</ui-button>
-    <!-- <ui-loading></ui-loading> -->
-    <ui-tooltip content="123承认发热个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf个人fgfgfgf" type="click">
-        <ui-button type="success">hover me</ui-button>
-    </ui-tooltip>
-    <ui-slider v-model="slider"></ui-slider>
-    <ui-pagination :total="100" :curPage.sync="curPage" :every="20"></ui-pagination>
-    <ui-tabs v-model="curTab">
-        <ui-tab-pane name="likaiqiang" label="likaiqiang">
-            <div>
-                content1
-            </div>
-        </ui-tab-pane>
-        <ui-tab-pane name="xunzhibin" label="xunzhibin">
-            <div>
-                content2
-            </div>
-        </ui-tab-pane>
-        <ui-tab-pane name="shikefeng" label="shikefeng">
-            <div>
-                content3
-            </div>
-        </ui-tab-pane>
-    </ui-tabs>
-    <ui-swiper>
-      <ui-swiper-item>
-        <img src="http://dummyimage.com/200x100/f27999"/>
-      </ui-swiper-item>
-      <ui-swiper-item>
-        <img src="http://dummyimage.com/200x100/79bcf2" alt="">
-      </ui-swiper-item>
-      <ui-swiper-item>
-        <img src="http://dummyimage.com/200x100/e0f279" alt="">
-      </ui-swiper-item>
-    </ui-swiper>
+  <div>
+    <ui-button>click me</ui-button>
   </div>
 </template>
-<script>
-import Vue from 'vue'
-import portal from '@/directives/portal.js'
-Vue.directive('dom-portal',portal)
 
-import Button from "@/components/button/index.js";
-import Input from "@/components/input/index.js";
-import Icon from "@/components/icon/index.js";
-import "@/components/datePicker/index.js";
-import "@/components/dialog/index.js";
-import '@/components/switch/index.js'
-import '@/components/radio-group/index.js'
-import '@/components/checkbox/index.js'
-import '@/components/checkbox-group/index.js'
-import '@/components/select/index.js'
-import '@/components/tabs/index.js'
-import '@/components/table/index.js'
-import '@/components/dialog/index.js'
-import '@/components/loading/index.js'
-import '@/components/message/index.js'
-import '@/components/tooltip/index.js'
-import '@/components/slider/index.js'
-import '@/components/pagination/index.js'
-import '@/components/swiper/index.js'
+<script>
+import Bees from './components/index.js'
+import Vue from 'vue'
+
+Vue.use(Bees.install)
+
 export default {
   name: "app",
   data() {
@@ -204,7 +139,7 @@ export default {
     };
   },
   methods:{
-      label(){
+      label(h){
           return (
               <div>
                 <span>1</span>

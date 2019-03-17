@@ -1,7 +1,5 @@
 
 
-import Check from './src/checkbox'
-import Vue from 'vue'
+import Checkbox from './src/checkbox.vue'
 
-Vue.component(Check.name,Check)
-export default Check
+export default Checkbox
