@@ -1,7 +1,7 @@
 <template>
   <div class="ui-swiper">
-    <transition-group tag="ul" name="move" class="ui-swiper-wrapper">
-      <swiper-item v-for="(item,index) in lists" :key="index" :content="item"></swiper-item>
+    <transition-group tag="ul" name="move" class="ui-swiper-wrapper" :style="{height:maxHeight+'px'}">
+      <swiper-item  @height="getHeight(index,$event)" v-for="(item,index) in lists" :key="index" :content="item"></swiper-item>
     </transition-group>
   </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   components:{
     swiperItem
   },
+  data(){
+    return {
+      heights:[]
+    }
+  },
   computed:{
     lists(){
       return this.$slots.default.filter(item => {
@@ -20,6 +25,14 @@ export default {
       }).map(item=>{
         return item.componentOptions.children
       })
+    },
+    maxHeight(){
+      return Math.max.apply(null,this.heights)
+    }
+  },
+  methods:{
+    getHeight(i,e){
+      this.$set(this.heights,i,e)
     }
   }
 }
