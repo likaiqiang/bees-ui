@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name bees ./src/main.js"
+    "build": "vue-cli-service build --target lib --name bees ./src/components/index.js"
   },
   "dependencies": {
     "vue": "^2.6.6",

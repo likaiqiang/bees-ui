@@ -11,10 +11,10 @@ import CheckboxGroup from './checkbox-group/index'
 import Select from './select/index'
 import {Tabs,TabPane} from './tabs/index'
 import Table from './table/index'
-import {Dialog,dialog} from './dialog/index'
+import {Dialog} from './dialog/index'
 import Loading from './loading/index'
 
-import Message from './message/index' //
+// import Message from './message/index' //
 import Tooltip from './tooltip/index'
 import Slider from './slider/index'
 import Pagination from './pagination/index'
