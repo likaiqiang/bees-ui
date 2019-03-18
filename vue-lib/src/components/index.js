@@ -9,16 +9,15 @@ import CheckboxGroup from './checkbox-group/index'
 
 
 import Select from './select/index'
-import Tabs from './tabs/index'
+import {Tabs,TabPane} from './tabs/index'
 import Table from './table/index'
 import Dialog from './dialog/index'
 import Loading from './loading/index'
 
-import Message from './message/index' //
 import Tooltip from './tooltip/index'
 import Slider from './slider/index'
 import Pagination from './pagination/index'
-import Swiper from './swiper/index' 
+import {Swiper,SwiperItem} from './swiper/index' 
 
 import portal from '@/directives/portal.js'
 import ClickOutside from "@/directives/clickoutside.js";
@@ -35,13 +34,15 @@ const components = {
   CheckboxGroup,
   Select,
   Tabs,
+  TabPane,
   Table,
   Dialog,
   Loading,
   Tooltip,
   Slider,
   Pagination,
-  Swiper
+  Swiper,
+  SwiperItem
 }
 
 export const install = (Vue,ops={})=>{

@@ -8,7 +8,6 @@ export default {
   },
   props:['content'],
   mounted(){
-    console.log(this.$refs)
     var child = this.$refs.item.children
     
     if(child[0].nodeName == 'IMG'){

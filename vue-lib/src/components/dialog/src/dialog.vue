@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-dialog-container" vue-dom-portal  v-show="visible">
+  <div class="ui-dialog-container" v-dom-portal  v-show="visible">
     <div class="ui-dialog">
       <ui-icon type="md-close" class="ui-dialog-close ESC" @click="closeDialog()"></ui-icon>
       <div class="ui-dialog-title" role="heading">{{title}}</div>

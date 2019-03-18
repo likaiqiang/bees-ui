@@ -2,7 +2,7 @@
     <div>
         <div class="ui-range-input ui-range" :style="{width:width+'px'}" @click="clickHandler">
             <div class="ui-range-track" ref="track" :style="{'border-left-width':left+'px'}">
-                <ui-tooltip ref="tooltip" :visible.sync="visible" :content="tooltip">
+                <ui-tooltip ref="tooltip" :content="tooltip">
                     <a class="ui-range-thumb" @mousedown="down" ref="thumb" href="javascript:" draggable="false"></a>
                 </ui-tooltip>
             </div>
@@ -20,8 +20,7 @@ export default {
             posThumb: {
                 x: '',
                 value: ''
-            },
-            visible: false
+            }
         }
     },
     props: {
@@ -78,7 +77,7 @@ export default {
         down(event) {
             this.posThumb.x = event.clientX;
             this.posThumb.value = this.val
-            this.visible = true
+            this.$refs.tooltip.visible = true
         },
         move(event) {
             if (typeof this.posThumb.x == 'number') {
@@ -92,7 +91,7 @@ export default {
         up() {
             this.posThumb.x = null
             this.posThumb.value = null
-            this.visible = false
+            this.$refs.tooltip.visible = false
         },
         validatorValue(value) {
             var min = this.min,

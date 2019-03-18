@@ -1,15 +1,31 @@
 <template>
   <div>
-    <ui-button>click me</ui-button>
+    <ui-tooltip content="我是content">
+      <ui-button type="success" @click="dialogVisible=true">click me</ui-button>
+    </ui-tooltip>
     <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
         <div>我是测试内容</div>
     </ui-dialog>
+    <ui-swiper>
+      <ui-swiper-item v-for="(item,index) in imgs" :key="index">
+        <img :src="item">
+      </ui-swiper-item>
+    </ui-swiper>
+    <ui-slider v-model="slider"></ui-slider>
   </div>
 </template>
 
 <script>
 import {install} from './components/index.js'
 import Vue from 'vue'
+
+var Mock = require('mockjs')
+
+var imgs = []
+
+for(var i=0;i<4;i++){
+  imgs[i] = Mock.Random.image( '200x100', Mock.Random.hex() )
+}
 
 Vue.use(install)
 
@@ -24,7 +40,7 @@ export default {
       dialog: true,
       checked: true,
       checked2: '2',
-      dialogVisible:true,
+      dialogVisible:false,
       list: [
         {
           label: "男”·",
@@ -138,7 +154,8 @@ export default {
               title:'年龄',
               key:'age'
           }
-      ]
+      ],
+      imgs:imgs
     };
   },
   methods:{
