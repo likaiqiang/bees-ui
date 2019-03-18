@@ -27,7 +27,6 @@
 <script>
 import Follow from "@/utils/follow.js";
 import Render from "@/utils/render.js";
-import ClickOutside from "@/directives/clickoutside.js";
 export default {
     name: "ui-tooltip",
     componnets: {
@@ -150,9 +149,6 @@ export default {
                 this.visib = false
             })
         }
-    },
-    directives: {
-        ClickOutside
     }
 };
 </script>

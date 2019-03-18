@@ -22,9 +22,5 @@ const message = function(){
         document.body.appendChild(instance.$el)
     }
 }
-const plugin = {}
-plugin.install = function (Vue, options) {
-    Vue.prototype.$Message = message()
-}
 
-export default plugin;
+export default message;

@@ -1,9 +1,11 @@
 module.exports = {
   lintOnSave: false,
   chainWebpack: config => {
-    config.externals({
-      'vue': 'Vue'
-    })
+    if(process.env.NODE_ENV!=='development'){
+      config.externals({
+        'vue': 'Vue'
+      })
+    }
     // config
     //   .plugin('webpack-bundle-analyzer')
     //   .use(BundleAnalyzerPlugin)

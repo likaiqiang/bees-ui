@@ -26,7 +26,6 @@
 import uiIcon from "@/components/icon";
 import uiButton from "@/components/button";
 import { isEmptyObject } from "@/utils/tools.js";
-import ClickOutside from '@/directives/clickoutside.js'
 import Render from '@/utils/render.js'
 
 export default {
@@ -49,9 +48,6 @@ export default {
       }
       this.closeDialog()
     }
-  },
-  directives:{
-    ClickOutside
   },
   components:{
     uiIcon,

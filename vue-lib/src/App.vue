@@ -1,6 +1,9 @@
 <template>
   <div>
     <ui-button>click me</ui-button>
+    <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
+        <div>我是测试内容</div>
+    </ui-dialog>
   </div>
 </template>
 
@@ -21,7 +24,7 @@ export default {
       dialog: true,
       checked: true,
       checked2: '2',
-      dialogVisible:false,
+      dialogVisible:true,
       list: [
         {
           label: "男”·",

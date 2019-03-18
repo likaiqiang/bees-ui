@@ -20,10 +20,5 @@ const dialog = function(config){
     document.body.appendChild(vm.$el)
 }
 
-const plugin = {}
-plugin.install = function (Vue, options) {
 
-    Vue.prototype.$Modal = dialog
-}
-
-export default plugin;
+export default dialog;

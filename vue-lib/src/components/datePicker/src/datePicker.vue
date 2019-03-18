@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import ClickOutside from "@/directives/clickoutside.js";
+
 import "@/components/input/index.js";
 import Follow from "@/utils/follow.js";
 import { getYearMonthDate } from "./helper.js";
@@ -88,9 +88,6 @@ export default {
   },
   mounted() {
     Follow(this.$refs.input.$el, this.$refs.panel);
-  },
-  directives: {
-    ClickOutside
   },
   methods: {
     hide() {
