@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Bees from './components/index.js'
+import {install} from './components/index.js'
 import Vue from 'vue'
 
-Vue.use(Bees.install)
+Vue.use(install)
 
 export default {
   name: "app",

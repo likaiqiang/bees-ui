@@ -17,7 +17,6 @@
  * new Follow(trigger, target, options);
  * 文档见：http://www.zhangxinxu.com/wordpress/?p=1328 position()方法
 **/
-import _ from 'lodash'
 
 function getHiddenElement(ele){
     var display = getComputedStyle(ele).display
@@ -57,8 +56,7 @@ var follow = function (trigger, target, options) {
         // 边缘位置自动调整
         edgeAdjust: true
     };
-
-    var params = _.extend({}, defaults, options || {});
+    var params = Object.assign({}, defaults, options || {})
 
     var triL, triT, tarL, tarT;
     var triH = 0;

@@ -9,16 +9,16 @@ import CheckboxGroup from './checkbox-group/index'
 
 
 import Select from './select/index'
-import {Tabs,TabPane} from './tabs/index'
+import Tabs from './tabs/index'
 import Table from './table/index'
-import {Dialog} from './dialog/index'
+import Dialog from './dialog/index'
 import Loading from './loading/index'
 
-// import Message from './message/index' //
+import Message from './message/index' //
 import Tooltip from './tooltip/index'
 import Slider from './slider/index'
 import Pagination from './pagination/index'
-import {Swiper,SwiperItem} from './swiper/index' 
+import Swiper from './swiper/index' 
 
 
 const components = {
@@ -31,25 +31,18 @@ const components = {
   CheckboxGroup,
   Select,
   Tabs,
-  TabPane,
   Table,
   Dialog,
   Loading,
   Tooltip,
   Slider,
   Pagination,
-  SwiperItem,
   Swiper
 }
 
-const install = (Vue,ops={})=>{
+export const install = (Vue,ops={})=>{
   Object.values(components).forEach(value => {
     Vue.component(value.name,value);
   })
 }
-const API = {
-  ...components,
-  install
-};
-
-export default API
+export default components

@@ -27,7 +27,6 @@
 <script>
 import tabHead from "./tab-head.vue";
 import tabBody from "./tab-body.vue";
-import Velocity from "velocity-animate";
 import Render from '@/utils/render.js'
 import {parent} from '@/utils/dom.js'
 export default {
