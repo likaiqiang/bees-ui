@@ -3,7 +3,6 @@ export default {
   name:'ui-swiper-item',
   data(){
     return {
-      height:0
     }
   },
   props:['content'],
@@ -13,18 +12,18 @@ export default {
     if(child[0].nodeName == 'IMG'){
 
       child[0].addEventListener('load',()=>{
-        this.height = child[0].getBoundingClientRect().height
-        this.$emit('height',this.height)
+        var height = child[0].getBoundingClientRect().height
+        this.$emit('load',height)
       })
     }
     else{
-      this.height = child[0].getBoundingClientRect().height
-      this.$emit('height',this.height)
+      var height = child[0].getBoundingClientRect().height
+      this.$emit('load',height)
     }
   },
   render(h,ctx){
     return (
-      <li class="ui-swiper-item" ref="item" style={{height:this.height+'px'}}>
+      <li class="ui-swiper-item" ref="item">
         {this.content}
       </li>
     )
