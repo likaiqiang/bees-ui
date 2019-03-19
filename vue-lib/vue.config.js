@@ -6,9 +6,13 @@ module.exports = {
         'vue': 'Vue'
       })
     }
-    // config
-    //   .plugin('webpack-bundle-analyzer')
-    //   .use(BundleAnalyzerPlugin)
-    //   .init(Plugin => new Plugin());
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
+      .tap(options => {
+        options.compilerOptions.preserveWhitespace = false
+        return options
+      })
   }
 }
