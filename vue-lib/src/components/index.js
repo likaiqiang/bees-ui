@@ -23,6 +23,7 @@ import portal from '@/directives/portal.js'
 import ClickOutside from "@/directives/clickoutside.js";
 import dialog from '@/components/dialog/src/dialog.js'
 import message from '@/components/message/index.js'
+import "@/styles/index.scss";
 
 const components = {
   Icon,

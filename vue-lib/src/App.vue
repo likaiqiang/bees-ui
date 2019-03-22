@@ -12,6 +12,7 @@
       </ui-swiper-item>
     </ui-swiper>
     <ui-slider v-model="slider"></ui-slider>
+    <ui-icon type="md-bug" />
   </div>
 </template>
 
@@ -198,5 +199,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./src/styles/index.scss";
+
 </style>
