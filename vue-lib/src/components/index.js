@@ -21,6 +21,7 @@ import {Swiper,SwiperItem} from './swiper/index'
 
 import portal from '@/directives/portal.js'
 import ClickOutside from "@/directives/clickoutside.js";
+import loading from '@/components/loading/src/directive.js'
 import dialog from '@/components/dialog/src/dialog.js'
 import message from '@/components/message/index.js'
 import "@/styles/index.scss";
@@ -36,9 +37,9 @@ const components = {
   Select,
   Tabs,
   TabPane,
+  Loading,
   Table,
   Dialog,
-  Loading,
   Tooltip,
   Slider,
   Pagination,
@@ -52,6 +53,7 @@ export const install = (Vue,ops={})=>{
   })
   Vue.directive('dom-portal',portal)
   Vue.directive('click-outside',ClickOutside)
+  Vue.directive('loading',loading)
   Vue.prototype.$Modal = dialog
   Vue.prototype.$Message = message()
 }

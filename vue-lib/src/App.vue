@@ -13,6 +13,8 @@
     </ui-swiper>
     <ui-slider v-model="slider"></ui-slider>
     <ui-icon type="md-bug" />
+    <ui-loading :small="true"></ui-loading>
+    <div v-loading.small="true" style="height:100px;border:1px solid"></div>
   </div>
 </template>
 
