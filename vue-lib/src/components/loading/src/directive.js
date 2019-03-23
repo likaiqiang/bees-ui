@@ -22,6 +22,23 @@ var directive = {
     el.style.position = 'relative'
     el.appendChild(loading.$el)
   },
+  componentUpdated(el,binding,vnode){
+    var value = binding.value
+    if(value){
+      var position = getComputedStyle(el).position
+      el.dataset.position = position
+      el.style.position = 'relative'
+      el.appendChild(loading.$el)
+    }
+    else{
+      el.style.position = el.dataset.position
+      el.dataset.position = ''
+      el.removeChild(loading.$el)
+    }
+  },
+  update(){
+    
+  },
   unbind:function(el,binding,vnode){
     el.style.position = el.dataset.position
     el.dataset.position = ''

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ui-tooltip content="我是content">
+    <!-- <ui-tooltip content="我是content">
       <ui-button type="success" @click="dialogVisible=true">click me</ui-button>
-    </ui-tooltip>
+    </ui-tooltip> -->
     <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
         <div>我是测试内容</div>
     </ui-dialog>
@@ -13,8 +13,9 @@
     </ui-swiper>
     <ui-slider v-model="slider"></ui-slider>
     <ui-icon type="md-bug" />
-    <ui-loading :small="true"></ui-loading>
-    <div v-loading.small="true" style="height:100px;border:1px solid"></div>
+    <!-- <ui-loading :small="true" v-model="loading"></ui-loading> -->
+    <div v-loading.small="loading" style="height:100px;border:1px solid"></div>
+    <ui-button @click="loading=!loading">click</ui-button>
   </div>
 </template>
 
@@ -195,7 +196,16 @@ export default {
               type:'error',
               content:'修改失败'
           })
+      },
+      clickHandler4(){
+        this.loading = !this.loading
       }
+  },
+  mounted(){
+    setTimeout(()=>{
+      console.log('loading changed')
+      this.loading = !this.loading
+    },6000)
   }
 };
 </script>
