@@ -13,6 +13,7 @@ import {Tabs,TabPane} from './tabs/index'
 import Table from './table/index'
 import Dialog from './dialog/index'
 import Loading from './loading/index'
+import Tag from './tag/index'
 
 import Tooltip from './tooltip/index'
 import Slider from './slider/index'
@@ -44,7 +45,8 @@ const components = {
   Slider,
   Pagination,
   Swiper,
-  SwiperItem
+  SwiperItem,
+  Tag
 }
 
 export const install = (Vue,ops={})=>{

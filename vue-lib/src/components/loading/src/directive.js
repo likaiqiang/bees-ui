@@ -40,6 +40,7 @@ var directive = {
     
   },
   unbind:function(el,binding,vnode){
+    loading.$destroy()
     el.style.position = el.dataset.position
     el.dataset.position = ''
     el.removeChild(loading.$el)
