@@ -14,24 +14,28 @@
   cursor: pointer;
   &.ui-tag-primary{
     background: #2d8cf0;
+    border-color: #2d8cf0;
     .ui-tag-text,.ui-icon-ios-close{
       color: white;
     }
   }
   &.ui-tag-success{
     background: #19be6b;
+    border-color: #19be6b;
     .ui-tag-text,.ui-icon-ios-close{
       color: white;
     }
   }
   &.ui-tag-wraning{
     background: #f90;
+    border-color: #f90;
     .ui-tag-text,.ui-icon-ios-close{
       color: white;
     }
   }
   &.ui-tag-error{
     background: #ed4014;
+    border-color: #ed4014;
     .ui-tag-text,.ui-icon-ios-close{
       color: white;
     }
@@ -131,6 +135,29 @@
     }
     .ui-icon-ios-close{
       color: #722ed1;
+    }
+  }
+  &.ui-tag-border{
+    background-color: transparent;
+    &.ui-tag-success{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #19be6b;
+      }
+    }
+    &.ui-tag-warning{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #f90;
+      }
+    }
+    &.ui-tag-error{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #ed4014;
+      }
+    }
+    &.ui-tag-primary{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: white;
+      }
     }
   }
   .ui-tag-text {

@@ -1,9 +1,9 @@
 <template>
-  <div :class="classes">
+  <div :class="classes" @click="TagClick">
     <span class="ui-tag-text">
       <slot></slot>
     </span>
-    <ui-icon type="ios-close"></ui-icon>
+    <ui-icon @click="closeHandler" type="ios-close"></ui-icon>
   </div>
 </template>
 
@@ -17,19 +17,17 @@ export default {
       type:Boolean,
       default:false
     },
-    checkable:{
-      type:Boolean,
-      default:false
-    },
     checked:{
       type:Boolean,
       default:false
     },
-    type:{
-      type:String,
-      validator(val){
-        return ['border','dot'].indexOf(val)!==-1
-      }
+    border:{
+      type:Boolean,
+      default:false
+    },
+    dot:{
+      type:Boolean,
+      default:false
     },
     color:{
       type:String,
@@ -51,14 +49,23 @@ export default {
       return [
         'ui-tag',
         `ui-tag-${this.color}`,
-        this.checkable ? 'ui-tag-checked' : '',
         this.closable ? 'ui-tag-closable' : '',
-        this.type ? `ui-tag-${this.type}` : ''
+        this.checked ? '' : 'ui-tag-border',
+        this.dot ? 'ui-tag-dot': ''
       ]
     }
   },
   components:{
     [Icon.name]:Icon
+  },
+  methods:{
+    TagClick(){
+      this.$emit('update:checked',!this.checked)
+      this.$emit('change',this.checked)
+    },
+    closeHandler(){
+      this.$emit('close',this.name)
+    }
   }
 }
 </script>
