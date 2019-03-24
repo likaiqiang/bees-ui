@@ -1,9 +1,9 @@
 <template>
-  <div :class="classes" @click="TagClick">
+  <div :class="classes" @click="TagClick" v-if="visible">
     <span class="ui-tag-text">
       <slot></slot>
     </span>
-    <ui-icon @click="closeHandler" type="ios-close"></ui-icon>
+    <ui-icon v-if="closable" @click.stop="closeHandler" type="ios-close"></ui-icon>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ const initColorList = ['default', 'primary', 'success', 'warning', 'error', 'blu
 import Icon from '../../icon/index.js'
 export default {
   name:'ui-tag',
+  data(){
+    return {
+      visible:true
+    }
+  },
   props:{
     closable:{
       type:Boolean,
@@ -25,10 +30,6 @@ export default {
       type:Boolean,
       default:false
     },
-    dot:{
-      type:Boolean,
-      default:false
-    },
     color:{
       type:String,
       validator(val){
@@ -38,10 +39,6 @@ export default {
     },
     name:{
       type:[Number,String]
-    },
-    fade:{
-      type:Boolean,
-      default:true
     }
   },
   computed:{
@@ -64,6 +61,7 @@ export default {
       this.$emit('change',this.checked)
     },
     closeHandler(){
+      this.visible = false
       this.$emit('close',this.name)
     }
   }

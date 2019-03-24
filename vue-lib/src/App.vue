@@ -16,7 +16,7 @@
     <!-- <ui-loading :small="true" v-model="loading"></ui-loading> -->
     <div v-loading.small="loading" style="height:100px;border:1px solid"></div>
     <ui-button @click="loading=!loading">click</ui-button>
-    <ui-tag type="border" :checked.sync="checked34" color="success" closable>标签一</ui-tag>
+    <ui-tag type="border" :checked.sync="checked34" color="success">标签一</ui-tag>
     
   </div>
 </template>
