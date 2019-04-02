@@ -98,7 +98,8 @@ export default {
   },
   methods: {
     closeHandler() {
-      this.val = "";
+      if(!this.readonly && !this.disabled)
+        this.val = ""
     },
     focusHandler() {
       this.$emit("focus");

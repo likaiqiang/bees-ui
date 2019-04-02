@@ -1,8 +1,8 @@
 <template>
-  <div :class="loadingClass" v-if="!small" :style="{height:height}">
+  <div :class="loadingClass" v-if="!small">
     <i class="ui-loading-icon"></i>
   </div>
-  <div :class="loadingClass" v-else :style="{height:height}">
+  <div :class="loadingClass" v-else>
     <s class="ui-loading-icon"></s>
   </div>
 </template>
@@ -22,10 +22,6 @@ export default {
       value:{
         type:Boolean,
         default:false
-      },
-      height:{
-        type:String,
-        default:'auto'
       }
     },
     computed:{

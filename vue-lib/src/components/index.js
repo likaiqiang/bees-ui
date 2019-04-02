@@ -1,6 +1,7 @@
 import Icon from './icon/index'
 import Button from './button/index'
 import DatePicker from './datePicker/index'
+import Input from './input/index'
 
 import Switch from './switch/index'
 import RadioGroup from './radio-group/index'
@@ -46,7 +47,8 @@ const components = {
   Pagination,
   Swiper,
   SwiperItem,
-  Tag
+  Tag,
+  Input
 }
 
 export const install = (Vue,ops={})=>{

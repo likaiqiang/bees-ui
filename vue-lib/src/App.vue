@@ -1,23 +1,13 @@
 <template>
   <div>
-    <!-- <ui-tooltip content="我是content">
-      <ui-button type="success" @click="dialogVisible=true">click me</ui-button>
-    </ui-tooltip> -->
-    <ui-dialog title="我是测试dialog" :visible.sync="dialogVisible">
-        <div>我是测试内容</div>
-    </ui-dialog>
-    <ui-swiper>
-      <ui-swiper-item v-for="(item,index) in imgs" :key="index">
-        <img :src="item">
-      </ui-swiper-item>
-    </ui-swiper>
-    <ui-slider v-model="slider"></ui-slider>
-    <ui-icon type="md-bug" />
-    <!-- <ui-loading :small="true" v-model="loading"></ui-loading> -->
-    <div v-loading.small="loading" style="height:100px;border:1px solid"></div>
-    <ui-button @click="loading=!loading">click</ui-button>
-    <ui-tag type="border" :checked.sync="checked34" color="success">标签一</ui-tag>
-    
+    <!-- <ui-checkbox-group v-model="checked">
+      <ui-checkbox v-for="(item,index) in list" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled"></ui-checkbox>
+    </ui-checkbox-group>
+    <div>{{checked}}</div> -->
+    <!-- <ui-input v-model="inputValue"  close></ui-input>
+    <ui-loading :value="true"></ui-loading>
+    <div style="height:100px" v-loading></div> -->
+    <ui-select :list="list" v-model="selectedValue"></ui-select>
   </div>
 </template>
 
@@ -39,130 +29,28 @@ export default {
   name: "app",
   data() {
     return {
-      checked34:true,
-      slider:50,
-      curPage:4,
-      loading: false,
-      value: "hello",
-      dialog: true,
-      checked: true,
-      checked2: '2',
-      dialogVisible:false,
-      list: [
+      disabled:false,
+      value: false,
+      inputValue:'123',
+      checked:[1,3],
+      selectedValue:1,
+      list:[
         {
-          label: "男”·",
-          value: '1'
+          label:'选项一',
+          value:1,
+          disabled:false
         },
         {
-          label: "女",
-          value: '2',
+          label:'选项二',
+          value:2,
           disabled:true
+        },
+        {
+          label:'选项三',
+          value:3,
+          disabled:false
         }
-      ],
-      list2:[
-          {
-              label:'label1',
-              value:'1'
-          },
-          {
-              label:'label2',
-              value:'2'
-          },
-          {
-              label:'label3',
-              value:'3'
-          },
-          {
-              label:'label4',
-              value:'4'
-          }
-      ],
-      checked3:['1','4','3'],
-      selected:'3',
-      curTab:'likaiqiang',
-      tableData:[
-          {
-              id:1,
-              name:'likaiqiang',
-              age:24,
-              gender:'男',
-              _checked:true
-          },
-          {
-              id:2,
-              name:'寻志斌',
-              age:24,
-              gender:'男',
-              _disabled:true
-          },{
-              id:3,
-              name:'shikefeng',
-              age:24,
-              gender:'男'
-          },
-          {
-              id:4,
-              name:'likaiqiang',
-              age:24,
-              gender:'男',
-              _checked:true
-          },
-          {
-              id:5,
-              name:'寻志斌',
-              age:24,
-              gender:'男',
-              _disabled:true
-          },{
-              id:6,
-              name:'shikefeng',
-              age:24,
-              gender:'男'
-          },{
-              id:7,
-              name:'likaiqiang',
-              age:24,
-              gender:'男',
-              _checked:true
-          },
-          {
-              id:8,
-              name:'寻志斌',
-              age:24,
-              gender:'男',
-              _disabled:true
-          },{
-              id:9,
-              name:'shikefeng',
-              age:24,
-              gender:'男'
-          }
-      ],
-      columns:[
-          {
-              type:'section'
-          },
-          {
-              title:'ID',
-              key:'id',
-              maxWidth:200,
-              minWidth:100
-          },
-          {
-              title:'姓名',
-              key:'name',
-              align:'center'
-          },
-          {
-              title:'性别',
-              key:'gender'
-          },
-          {
-              title:'年龄',
-              key:'age'
-          }
-      ],
-      imgs:imgs
+      ]
     };
   },
   methods:{

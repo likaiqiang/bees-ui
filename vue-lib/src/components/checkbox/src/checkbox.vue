@@ -19,7 +19,8 @@ export default {
     name:'ui-checkbox',
     data(){
         return {
-            id:createId()
+            id:createId(),
+            val:this.value
         }
     },
     props:{
@@ -34,18 +35,14 @@ export default {
             default:false
         }
     },
-    computed:{
-        val:{
-            get(){
-                if(this.disabled)
-                    return false
-                else return this.value
-            },
-            set(val){
-                this.$emit('input',val)
-                this.$emit('change',val)
-            }
+    watch:{
+      value:function(newVal,oldVal){
+        if(newVal != oldVal && !this.disabled){
+          this.val = newVal
+          this.$emit('input',newVal)
+          this.$emit('change',newVal)
         }
+      }
     }
 }
 </script>
