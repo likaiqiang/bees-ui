@@ -1,9 +1,9 @@
 <template>
-  <div class="ui-steps ui-steps-horizontal">
-    <div class="ui-steps-item ui-steps-status-finish" v-for="(item,index) in list" :key="index">
+  <div class="ui-steps">
+    <div :class="getItemClasses(index)" v-for="(item,index) in list" :key="index">
       <div class="ui-steps-head">
-        <template v-if="current == index">
-          <Icon type="md-checkmark"></Icon>
+        <template v-if="current > index">
+          <Icon color="#2486ff" type="md-checkmark"></Icon>
         </template>
         <template v-else>
           {{index}}
@@ -11,7 +11,12 @@
       </div>
       <div class="ui-steps-main">
         <div class="ui-steps-title">{{item.title}}</div> 
-        <div class="ui-steps-content">{{item.content}}</div>
+        <div class="ui-steps-content">
+          <template v-if="typeof item.content != 'function'">
+            {{item.content}}
+          </template>
+          <Render v-else :render="item.content"></Render>
+        </div>
       </div>
     </div>
   </div>
@@ -19,10 +24,12 @@
 
 <script>
 import Icon from '../../icon'
+import Render from '@/utils/render.js'
 export default {
   name:'ui-steps',
   components:{
-    Icon
+    Icon,
+    Render
   },
   computed:{
     list(){
@@ -38,6 +45,18 @@ export default {
   },
   mounted(){
     console.log(this.$slots.default)
+  },
+  methods:{
+    getItemClasses(index){
+      return [
+        'ui-steps-item',
+        {
+          'ui-steps-status-finish':index < this.current,
+          'ui-steps-status-wait':index > this.current,
+          'ui-steps-status-process':index == this.current
+        }
+      ]
+    }
   },
   props:{
     current:{

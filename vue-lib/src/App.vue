@@ -10,7 +10,7 @@
     <ui-button type="primary">primary</ui-button>
     <ui-button type="success">success</ui-button>
     <ui-select :list="list" v-model="selectedValue"></ui-select>
-    <ui-steps :current="0">
+    <ui-steps :current="1">
       <ui-step v-for="(item,index) in steps" :key="index" :title="item.title" :content="item.content"></ui-step>
     </ui-steps>
   </div>
