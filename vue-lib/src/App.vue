@@ -13,6 +13,9 @@
     <ui-steps :current="1">
       <ui-step v-for="(item,index) in steps" :key="index" :title="item.title" :content="item.content"></ui-step>
     </ui-steps>
+    <ui-circle :value="60">
+
+    </ui-circle>
   </div>
 </template>
 

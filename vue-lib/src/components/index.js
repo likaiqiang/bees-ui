@@ -27,6 +27,7 @@ import ClickOutside from "@/directives/clickoutside.js";
 import loading from '@/components/loading/src/directive.js'
 import dialog from '@/components/dialog/src/dialog.js'
 import message from '@/components/message/index.js'
+import circle from '@/components/circle/index.js'
 import "@/styles/index.scss";
 
 const components = {
@@ -51,7 +52,8 @@ const components = {
   Tag,
   Input,
   Steps,
-  Step
+  Step,
+  circle
 }
 
 export const install = (Vue,ops={})=>{
