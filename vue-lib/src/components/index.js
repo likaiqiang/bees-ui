@@ -21,6 +21,7 @@ import Tooltip from './tooltip/index'
 import Slider from './slider/index'
 import Pagination from './pagination/index'
 import {Swiper,SwiperItem} from './swiper/index' 
+import Breadcrumb from './breadcrumb/index.js'
 
 import portal from '@/directives/portal.js'
 import ClickOutside from "@/directives/clickoutside.js";
@@ -55,7 +56,8 @@ const components = {
   Steps,
   Step,
   circle,
-  progress
+  progress,
+  Breadcrumb
 }
 
 export const install = (Vue,ops={})=>{
