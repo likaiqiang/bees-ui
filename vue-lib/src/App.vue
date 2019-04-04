@@ -7,7 +7,12 @@
     <!-- <ui-input v-model="inputValue"  close></ui-input>
     <ui-loading :value="true"></ui-loading>
     <div style="height:100px" v-loading></div> -->
+    <ui-button type="primary">primary</ui-button>
+    <ui-button type="success">success</ui-button>
     <ui-select :list="list" v-model="selectedValue"></ui-select>
+    <ui-steps :current="0">
+      <ui-step v-for="(item,index) in steps" :key="index" :title="item.title" :content="item.content"></ui-step>
+    </ui-steps>
   </div>
 </template>
 
@@ -49,6 +54,24 @@ export default {
           label:'选项三',
           value:3,
           disabled:false
+        }
+      ],
+      steps:[
+        {
+          title:'title1',
+          content:'content1'
+        },
+        {
+          title:'title2',
+          content:'content2'
+        },
+        {
+          title:'title3',
+          content:'content3'
+        },
+        {
+          title:'title4',
+          content:'content4'
         }
       ]
     };

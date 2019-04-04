@@ -1,0 +1,39 @@
+.ui-steps{
+  display:flex;
+  .ui-steps-item{
+    flex:1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    &::before{
+      content: " ";
+      height: 1px;
+      background-color: #2486ff;
+      position: absolute;
+      left: 10px;
+      right:10px;
+      top: 50%;
+    }
+    .ui-steps-head{
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid #2486ff;
+      background-color: white;
+      position: relative;
+      text-align: center;
+    }
+    .ui-steps-main{
+      position: relative;
+      .ui-steps-title{
+        display: inline-block;
+        background-color: white;
+        margin-top: 16px;
+        padding: 0 10px;
+      }
+      .ui-steps-content{
+        padding: 0 10px;
+      }
+    }
+  }
+}

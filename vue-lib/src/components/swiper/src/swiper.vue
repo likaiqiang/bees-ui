@@ -25,7 +25,7 @@ export default {
   computed:{
     lists(){
       return this.$slots.default.filter(item => {
-          return item.tag !== undefined;
+          return /ui-swiper/.test(item.tag)
       }).map(item=>{
         return item.componentOptions.children
       })
