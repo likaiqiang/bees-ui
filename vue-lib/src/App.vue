@@ -7,15 +7,17 @@
     <!-- <ui-input v-model="inputValue"  close></ui-input>
     <ui-loading :value="true"></ui-loading>
     <div style="height:100px" v-loading></div> -->
-    <ui-button type="primary">primary</ui-button>
-    <ui-button type="success">success</ui-button>
+    <ui-button type="primary" disabled>primary</ui-button>
+    <ui-button type="warning">success</ui-button>
     <ui-select :list="list" v-model="selectedValue"></ui-select>
     <ui-steps :current="1">
       <ui-step v-for="(item,index) in steps" :key="index" :title="item.title" :content="item.content"></ui-step>
     </ui-steps>
-    <ui-circle :value="60">
-
-    </ui-circle>
+    <ui-slider :step="1" v-model="sliderValue"></ui-slider>
+    
+    <ui-progress :value="sliderValue">
+      
+    </ui-progress>
   </div>
 </template>
 
@@ -42,6 +44,7 @@ export default {
       inputValue:'123',
       checked:[1,3],
       selectedValue:1,
+      sliderValue:20,
       list:[
         {
           label:'选项一',

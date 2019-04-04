@@ -28,6 +28,7 @@ import loading from '@/components/loading/src/directive.js'
 import dialog from '@/components/dialog/src/dialog.js'
 import message from '@/components/message/index.js'
 import circle from '@/components/circle/index.js'
+import progress from '@/components/progress/index.js'
 import "@/styles/index.scss";
 
 const components = {
@@ -53,7 +54,8 @@ const components = {
   Input,
   Steps,
   Step,
-  circle
+  circle,
+  progress
 }
 
 export const install = (Vue,ops={})=>{
