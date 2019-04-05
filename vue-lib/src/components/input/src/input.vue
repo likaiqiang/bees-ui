@@ -11,6 +11,7 @@
         :style="inputStyles"
         @focus="focusHandler"
         @blur="blurHandler"
+        @click="clickHandler"
         :placeholder="placeholder"
         v-model="val"
         :readonly="readonly"
@@ -106,6 +107,9 @@ export default {
     },
     blurHandler() {
       this.$emit("blur");
+    },
+    clickHandler(){
+      this.$emit('click')
     }
   },
   mounted() {

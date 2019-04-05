@@ -1,6 +1,6 @@
 <template>
-  <div v-click-outside="hide" style="display:inline-block">
-    <ui-input ref="input" @focus="focus" readonly v-model="formatValue"></ui-input>
+  <div >
+    <ui-input ref="input" @click="focus" readonly v-model="formatValue"></ui-input>
     <div class="ui-date-container" ref="panel" v-dom-portal v-show="visible">
       <div class="ui-date-x">
         <div class="ui-date-head">
@@ -95,7 +95,8 @@ export default {
       this.isShowYearMonth = false
     },
     focus() {
-      this.visible = true;
+      console.log('focue')
+      this.visible = !this.visible
     },
     leftPad(n) {
       return n < 10 ? "0" + n : "" + n;

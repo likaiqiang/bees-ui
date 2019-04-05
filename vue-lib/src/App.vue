@@ -21,6 +21,7 @@
     <ui-upload :on-success="uploadSuccess" action="https://upload-11.herokuapp.com/upload">
       <ui-button>点我上传</ui-button>
     </ui-upload>
+    <ui-date-picker></ui-date-picker>
   </div>
 </template>
 
