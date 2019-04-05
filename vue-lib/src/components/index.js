@@ -30,6 +30,7 @@ import dialog from '@/components/dialog/src/dialog.js'
 import message from '@/components/message/index.js'
 import circle from '@/components/circle/index.js'
 import progress from '@/components/progress/index.js'
+import upload from '@/components/upload/index.js'
 import "@/styles/index.scss";
 
 const components = {
@@ -57,7 +58,7 @@ const components = {
   Step,
   circle,
   progress,
-  Breadcrumb
+  upload
 }
 
 export const install = (Vue,ops={})=>{

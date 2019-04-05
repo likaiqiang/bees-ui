@@ -18,6 +18,9 @@
     <ui-progress :value="sliderValue">
       
     </ui-progress>
+    <ui-upload action="https://upload-11.herokuapp.com/upload">
+      <ui-button>点我上传</ui-button>
+    </ui-upload>
   </div>
 </template>
 
