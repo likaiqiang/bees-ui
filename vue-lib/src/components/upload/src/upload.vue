@@ -10,14 +10,21 @@
             type="file"
             @change="changeHandler"
             ref="input"
+            :accept="accept"
         >
     </div>
 </template>
 
 <script>
-import ajax from './ajax';
+import ajax from "./ajax";
 export default {
     name: "ui-upload",
+    data(){
+      return {
+        fileList:[],
+        tempIndex: 1
+      }
+    },
     methods: {
         changeHandler(e) {
             const files = e.target.files;
@@ -63,20 +70,6 @@ export default {
             }
         },
         post(file) {
-            // check format
-            if (this.format.length) {
-                const _file_format = file.name
-                    .split(".")
-                    .pop()
-                    .toLocaleLowerCase();
-                const checked = this.format.some(
-                    item => item.toLocaleLowerCase() === _file_format
-                );
-                if (!checked) {
-                    this.onFormatError(file, this.fileList);
-                    return false;
-                }
-            }
             // check maxSize
             if (this.maxSize) {
                 if (file.size > this.maxSize * 1024) {
@@ -117,24 +110,68 @@ export default {
             };
             this.fileList.push(_file);
         },
+        getFile(file) {
+            const fileList = this.fileList;
+            let target;
+            fileList.every(item => {
+                target = file.uid === item.uid ? item : null;
+                return !target;
+            });
+            return target;
+        },
+        handleProgress(e, file) {
+            const _file = this.getFile(file);
+            this.onProgress(e, _file, this.fileList);
+            _file.percentage = e.percent || 0;
+        },
+        handleSuccess(res, file) {
+            const _file = this.getFile(file);
+            if (_file) {
+                _file.status = "finished";
+                _file.response = res;
+
+                this.onSuccess(res, _file, this.fileList);
+                // this.dispatch("FormItem", "on-form-change", _file);
+                setTimeout(() => {
+                    _file.showProgress = false;
+                }, 1000);
+            }
+        },
+        handleError(err, response, file) {
+            const _file = this.getFile(file);
+            const fileList = this.fileList;
+            _file.status = "fail";
+            fileList.splice(fileList.indexOf(_file), 1);
+            this.onError(err, response, file);
+        },
+        handleRemove(file) {
+            const fileList = this.fileList;
+            fileList.splice(fileList.indexOf(file), 1);
+            this.onRemove(file, fileList);
+        },
+        handlePreview(file) {
+            if (file.status === "finished") {
+                this.onPreview(file);
+            }
+        },
+        clearFiles() {
+            this.fileList = [];
+        },
         clickHandler() {
+            if (this.disabled) return
             this.$refs.input.click();
         }
     },
     props: {
         action: {
             type: String,
-            required: true
+            default: "https://upload-11.herokuapp.com/upload"
         },
         headers: {
             type: Object,
             default() {
                 return {};
             }
-        },
-        multiple: {
-            type: Boolean,
-            default: false
         },
         data: {
             type: Object
@@ -146,23 +183,6 @@ export default {
         withCredentials: {
             type: Boolean,
             default: false
-        },
-        showUploadList: {
-            type: Boolean,
-            default: true
-        },
-        // type: {
-        //     type: String,
-        //     validator(value) {
-        //         return oneOf(value, ["select", "drag"]);
-        //     },
-        //     default: "select"
-        // },
-        format: {
-            type: Array,
-            default() {
-                return [];
-            }
         },
         accept: {
             type: String
@@ -206,22 +226,6 @@ export default {
             default() {
                 return {};
             }
-        },
-        onFormatError: {
-            type: Function,
-            default() {
-                return {};
-            }
-        },
-        defaultFileList: {
-            type: Array,
-            default() {
-                return [];
-            }
-        },
-        paste: {
-            type: Boolean,
-            default: false
         },
         disabled: {
             type: Boolean,

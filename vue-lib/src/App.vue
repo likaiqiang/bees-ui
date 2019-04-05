@@ -18,7 +18,7 @@
     <ui-progress :value="sliderValue">
       
     </ui-progress>
-    <ui-upload action="https://upload-11.herokuapp.com/upload">
+    <ui-upload :on-success="uploadSuccess" action="https://upload-11.herokuapp.com/upload">
       <ui-button>点我上传</ui-button>
     </ui-upload>
   </div>
@@ -122,6 +122,9 @@ export default {
       },
       clickHandler4(){
         this.loading = !this.loading
+      },
+      uploadSuccess(){
+        debugger
       }
   },
   mounted(){
