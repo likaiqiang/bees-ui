@@ -59,8 +59,7 @@ const components = {
   Step,
   circle,
   progress,
-  upload,
-  Elevator
+  upload
 }
 
 export const install = (Vue,ops={})=>{

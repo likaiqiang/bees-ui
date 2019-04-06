@@ -37,7 +37,6 @@ export default {
     },
     computed:{
         list(){
-          debugger
             return this.$slots.default.filter(item => {
                     return /ui-checkbox/.test(item.tag)
                 })
