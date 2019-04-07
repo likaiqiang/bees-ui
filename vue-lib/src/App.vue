@@ -1,20 +1,5 @@
 <template>
   <div>
-    <!-- <ui-checkbox-group v-model="checked">
-      <ui-checkbox v-for="(item,index) in list" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled"></ui-checkbox>
-    </ui-checkbox-group>
-    <div>{{checked}}</div> -->
-    <!-- <ui-input v-model="inputValue"  close></ui-input>
-    <ui-loading :value="true"></ui-loading>
-    <div style="height:100px" v-loading></div> -->
-    <ui-button type="primary" disabled>primary</ui-button>
-    <ui-button type="warning">success</ui-button>
-    <ui-select :list="list" v-model="selectedValue"></ui-select>
-    <ui-steps :current="1">
-      <ui-step v-for="(item,index) in steps" :key="index" :title="item.title" :content="item.content"></ui-step>
-    </ui-steps>
-    <ui-slider :step="1" v-model="sliderValue"></ui-slider>
-    
     <ui-progress :value="sliderValue">
       
     </ui-progress>
@@ -22,6 +7,7 @@
       <ui-button>点我上传</ui-button>
     </ui-upload>
     <ui-date-picker></ui-date-picker>
+    <ui-input value="123" width="300px" close radius="5px" placeholder="请输入合法内容"></ui-input>
   </div>
 </template>
 

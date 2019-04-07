@@ -7,7 +7,7 @@
       </div>
       <input
         ref="input"
-        :type="type"
+        type="text"
         :style="inputStyles"
         @focus="focusHandler"
         @blur="blurHandler"
@@ -75,10 +75,6 @@ export default {
     placeholder: {
       type: String,
       default: ""
-    },
-    type: {
-      type: String,
-      default: "text"
     },
     autofocus: {
       type: Boolean,
