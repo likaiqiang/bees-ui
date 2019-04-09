@@ -77,14 +77,16 @@ export default {
   name: "ui-date-picker",
   data() {
     return {
-      value: new Date(),
       visible: false,
       isShowYearMonth: false,
       isShowMinute: false
     };
   },
-  created() {
-    this.value = new Date();
+  props:{
+    value:{
+      type:Date,
+      default:new Date()
+    }
   },
   mounted() {
     Follow(this.$refs.input.$el, this.$refs.panel);
@@ -95,7 +97,6 @@ export default {
       this.isShowYearMonth = false
     },
     focus() {
-      console.log('focue')
       this.visible = !this.visible
     },
     leftPad(n) {
@@ -103,30 +104,35 @@ export default {
     },
     selecteDate(item, index) {
       const { year, month, date } = getYearMonthDate(this.value);
-      this.value = new Date(year, month + item.monthIndex, item.date);
+      this.val = new Date(year, month + item.monthIndex, item.date);
       this.visible = false;
     },
     prevMonth() {
       var { year, month, date } = getYearMonthDate(this.value);
-      this.value = new Date(year, month - 1, date);
+      this.val = new Date(year, month - 1, date);
     },
     nextMonth() {
       var { year, month, date } = getYearMonthDate(this.value);
-      this.value = new Date(year, month + 1, date);
+      this.val = new Date(year, month + 1, date);
     },
     now() {
-      this.value = new Date();
+      this.val = new Date();
     },
     selectYearMonth(item) {
       var { year, month, date } = getYearMonthDate(this.value);
-      this.value = new Date(item.year, item.month, date);
+      this.val = new Date(item.year, item.month, date);
       this.isShowYearMonth = false
-      this.$nextTick(()=>{
-        console.log(this.isShowYearMonth)
-      })
     }
   },
   computed: {
+    val:{
+      get(){
+        return this.value
+      },
+      set(val){
+        this.$emit('input',val)
+      }
+    },
     year() {
       return new Date(this.value).getFullYear();
     },
@@ -227,6 +233,11 @@ export default {
       return arr;
     },
     hourMiunte() {}
+  },
+  watch:{
+    value:function(val){
+      this.$emit('change',val)
+    }
   }
 };
 </script>
