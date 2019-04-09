@@ -44,7 +44,6 @@ export default {
     window.addEventListener("scroll", this.scrollHandler);
     if (window.MutationObserver) {
       this.mutationObserver = new window.MutationObserver(function(mutations) {
-        console.log("mutations");
         if (
           mutations[0].addedNodes.length ||
           mutations[0].removedNodes.length
@@ -91,10 +90,8 @@ export default {
       var rectTop = this.$refs.wrapper.getBoundingClientRect().top;
       if (rectTop < this.distance) {
         this.isSticky = true;
-        console.log("滚过了");
       } else {
         this.isSticky = false;
-        console.log("没有滚过");
       }
     },
     domInsertedHandler() {
