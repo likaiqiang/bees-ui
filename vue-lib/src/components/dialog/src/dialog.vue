@@ -46,6 +46,7 @@ export default {
       if(typeof this.buttons[i].callback == 'function'){
         this.buttons[i].callback.call(this)
       }
+      i ? this.$emit('sure') : this.$emit('cancle')
       this.closeDialog()
     }
   },
