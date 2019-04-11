@@ -77,12 +77,10 @@ s.ui-loading-icon {
 	.ui-loading-icon {
 		position: relative;
 		border-radius: 50%;
-		-webkit-mask: radial-gradient(transparent 12px, #000 13px);
 		mask: radial-gradient(transparent 12px, #000 13px);
 		overflow: hidden;
 	}
 	s.ui-loading-icon {
-		-webkit-mask: radial-gradient(transparent 8px, #000 9px);
 		mask: radial-gradient(transparent 8px, #000 9px);
 	}
 	.ui-loading-icon,
