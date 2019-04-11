@@ -18,10 +18,6 @@ export default {
       primary:{
         type:Boolean,
         default:false
-      },
-      value:{
-        type:Boolean,
-        default:false
       }
     },
     computed:{

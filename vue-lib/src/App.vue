@@ -1,13 +1,21 @@
 <template>
   <div>
-    <ui-progress :value="sliderValue">
+    <!-- <ui-progress :value="sliderValue">
       
     </ui-progress>
     <ui-upload :on-success="uploadSuccess" action="https://upload-11.herokuapp.com/upload">
       <ui-button>点我上传</ui-button>
     </ui-upload>
     <ui-date-picker></ui-date-picker>
-    <ui-input value="123" width="300px" close radius="5px" placeholder="请输入合法内容"></ui-input>
+    <ui-input value="123" width="300px" close radius="5px" placeholder="请输入合法内容"></ui-input> -->
+    <ui-circle :value="sliderValue">
+      <div>value:{{sliderValue}}</div>
+    </ui-circle>
+    <!-- <ui-date-picker v-model="date"></ui-date-picker> -->
+    <!-- <ui-dialog @sure="sure" @cancle="cancle" title="我是title" :visible.sync="dialogVisible">
+      <div>我是body</div>
+    </ui-dialog> 
+    <ui-button type="primary" @click="dialogVisible=true">open</ui-button> -->
   </div>
 </template>
 
@@ -35,6 +43,8 @@ export default {
       checked:[1,3],
       selectedValue:1,
       sliderValue:20,
+      date:new Date(2019,3,21),
+      dialogVisible:false,
       list:[
         {
           label:'选项一',
@@ -111,7 +121,13 @@ export default {
         this.loading = !this.loading
       },
       uploadSuccess(){
-        debugger
+        
+      },
+      sure(){
+        console.log('sure')
+      },
+      cancle(){
+        console.log('cancle')
       }
   },
   mounted(){
