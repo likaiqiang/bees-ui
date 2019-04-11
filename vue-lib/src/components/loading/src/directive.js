@@ -4,15 +4,13 @@ var constructor = Vue.extend(Loading)
 var loading
 var directive = {
   inserted:function(el,binding,vnode){
-    var {primary,small} = binding.modifiers
+    var {small} = binding.modifiers
     var value = binding.value
     var height = el.getBoundingClientRect().height
     
     loading = new constructor({
       propsData:{
-        primary,
         small,
-        value,
         height:height+''
       }
     })
@@ -20,7 +18,8 @@ var directive = {
     var position = getComputedStyle(el).position
     el.dataset.position = position
     el.style.position = 'relative'
-    el.appendChild(loading.$el)
+    if(value)
+      el.appendChild(loading.$el)
   },
   componentUpdated(el,binding,vnode){
     var value = binding.value
