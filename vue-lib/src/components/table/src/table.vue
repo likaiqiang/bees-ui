@@ -2,9 +2,6 @@
     <div class="ui-table-wrapper" :style="{height:this.height}">
         <div class="ui-table-head">
             <table class="ui-table">
-                <colgroup>
-                    <col ref="col" v-for="(item,index) in columns" :key="index" :width="item.width"></col>
-                </colgroup>
                 <thead>
                     <tr>
                         <th ref="th" v-if="columns[0].type=='section'" :style="{'text-align':columns[0].align}">
@@ -18,9 +15,6 @@
         </div>
         <div class="ui-table-body">
             <table  class="ui-table">
-                <colgroup>
-                    <col v-for="(item,index) in columns" :key="index" :width="item.width"></col>
-                </colgroup>
                 <tbody>
                     <tr v-for="(item,index) in dataSource" :key="index">
                         <template>
@@ -57,7 +51,7 @@ export default {
     },
     data(){
         return {
-           colsWidth:[] 
+           
         }
     },
     components:{
@@ -78,21 +72,26 @@ export default {
     computed:{
         isAllChecked:{
             get(){
-                var arr = this.dataSource.filter(item=>{
-                    return Boolean(item._checked) == false
+                var checkedArr = this.dataSource.filter(item=>{
+                    return Boolean(item._checked) == true
                 })
 
-                return !arr.length
+                var disabledArr = this.dataSource.filter(item=>{
+                  return item._disabled
+                })
+                return checkedArr.length + disabledArr.length == this.dataSource.length
             },
             set(checked){
                 if(checked){
                     this.dataSource.forEach(item=>{
+                      if(!item._disabled)
                         this.$set(item,'_checked',true)
                     })
                 }
                 else{
                     this.dataSource.forEach(item=>{
-                        this.$set(item,'_checked',false)
+                        if(!item._disabled)
+                          this.$set(item,'_checked',false)
                     })
                 }
             }
@@ -102,27 +101,6 @@ export default {
                 return typeof item.type === 'undefined'
             })
         }
-    },
-    mounted(){
-        // this.colsWidth = this.columns.map((item,index)=>{
-        //     if(typeof item.width !=='undefined'){
-        //         return item.width
-        //     }
-        //     else{
-        //         console.log(index,this.$refs.th[index])
-        //         return parseInt(getComputedStyle(this.$refs.th[index]).width)
-        //     }
-        // })
-        // var _this = this
-        // window.addEventListener('resize',()=>{
-        //     _this.colsWidth.forEach((item,index)=>{
-        //         var col = this.$refs.col[index],
-        //             colWidth = Number(col.getAttribute('width')),
-        //             column = this.columns[index]
-                
-        //     })
-        // })
-        console.log(this.$refs.th)
     }
 };
 </script>

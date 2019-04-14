@@ -14,7 +14,7 @@
 
 <script>
 import Radio from '../../radio/index.js'
-
+import { createId } from "@/utils/tools";
 export default {
     name: "ui-radio-group",
     props: {

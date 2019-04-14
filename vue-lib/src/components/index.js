@@ -6,6 +6,7 @@ import {Steps,Step} from './steps/index'
 
 import Switch from './switch/index'
 import RadioGroup from './radio-group/index'
+import Radio from './radio/index'
 import Checkbox from './checkbox/index'
 import CheckboxGroup from './checkbox-group/index'
 
@@ -16,6 +17,7 @@ import Table from './table/index'
 import Dialog from './dialog/index'
 import Loading from './loading/index'
 import Tag from './tag/index'
+import Sticky from './sticky/index'
 
 import Tooltip from './tooltip/index'
 import Slider from './slider/index'
@@ -40,6 +42,7 @@ const components = {
   DatePicker,
   Switch,
   RadioGroup,
+  Radio,
   Checkbox,
   CheckboxGroup,
   Select,
@@ -59,7 +62,8 @@ const components = {
   Step,
   circle,
   progress,
-  upload
+  upload,
+  Sticky
 }
 
 export const install = (Vue,ops={})=>{

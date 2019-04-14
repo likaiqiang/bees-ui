@@ -1,21 +1,10 @@
 <template>
   <div>
-    <!-- <ui-progress :value="sliderValue">
-      
-    </ui-progress>
-    <ui-upload :on-success="uploadSuccess" action="https://upload-11.herokuapp.com/upload">
-      <ui-button>点我上传</ui-button>
-    </ui-upload>
-    <ui-date-picker></ui-date-picker>
-    <ui-input value="123" width="300px" close radius="5px" placeholder="请输入合法内容"></ui-input> -->
-    <ui-circle :value="sliderValue">
-      <div>value:{{sliderValue}}</div>
-    </ui-circle>
-    <!-- <ui-date-picker v-model="date"></ui-date-picker> -->
-    <!-- <ui-dialog @sure="sure" @cancle="cancle" title="我是title" :visible.sync="dialogVisible">
-      <div>我是body</div>
-    </ui-dialog> 
-    <ui-button type="primary" @click="dialogVisible=true">open</ui-button> -->
+    <ui-table height="300px" :columns="columns" :dataSource="tableData"></ui-table>
+    <ui-checkbox-group v-model="value">
+  <ui-checkbox :value="1" label="男"></ui-checkbox>
+  <ui-checkbox :value="2" label="女"></ui-checkbox>
+</ui-checkbox-group>
   </div>
 </template>
 
@@ -37,49 +26,87 @@ export default {
   name: "app",
   data() {
     return {
-      disabled:false,
-      value: false,
-      inputValue:'123',
-      checked:[1,3],
-      selectedValue:1,
-      sliderValue:20,
-      date:new Date(2019,3,21),
-      dialogVisible:false,
-      list:[
-        {
-          label:'选项一',
-          value:1,
-          disabled:false
-        },
-        {
-          label:'选项二',
-          value:2,
-          disabled:true
-        },
-        {
-          label:'选项三',
-          value:3,
-          disabled:false
-        }
+      loading:false,
+      tableData:[
+          {
+              id:1,
+              name:'likaiqiang',
+              age:24,
+              gender:'男',
+              _checked:true
+          },
+          {
+              id:2,
+              name:'寻志斌',
+              age:24,
+              gender:'男',
+              _disabled:true
+          },{
+              id:3,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          },
+          {
+              id:4,
+              name:'likaiqiang',
+              age:24,
+              gender:'男',
+              _checked:true
+          },
+          {
+              id:5,
+              name:'寻志斌',
+              age:24,
+              gender:'男',
+              _disabled:true
+          },{
+              id:6,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          },{
+              id:7,
+              name:'likaiqiang',
+              age:24,
+              gender:'男',
+              _checked:true
+          },
+          {
+              id:8,
+              name:'寻志斌',
+              age:24,
+              gender:'男',
+              _disabled:true
+          },{
+              id:9,
+              name:'shikefeng',
+              age:24,
+              gender:'男'
+          }
       ],
-      steps:[
-        {
-          title:'title1',
-          content:'content1'
-        },
-        {
-          title:'title2',
-          content:'content2'
-        },
-        {
-          title:'title3',
-          content:'content3'
-        },
-        {
-          title:'title4',
-          content:'content4'
-        }
-      ]
+      columns:[
+          {
+              title:'ID',
+              key:'id',
+              maxWidth:200,
+              minWidth:100
+          },
+          {
+              title:'姓名',
+              key:'name',
+              align:'center'
+          },
+          {
+              title:'性别',
+              key:'gender'
+          },
+          {
+              title:'年龄',
+              key:'age'
+          }
+      ],
+      value:[1]
     };
   },
   methods:{
