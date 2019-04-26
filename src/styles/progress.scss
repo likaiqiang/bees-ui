@@ -1,0 +1,22 @@
+.ui-progress-wrapper{
+  display: flex;
+  align-items: center;
+  .ui-progress{
+    flex:1;
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    vertical-align: middle;
+    position: relative;
+    height: 10px;
+    .ui-progress-inner{
+      position: absolute;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 100px;
+    }
+    
+  }
+  .ui-progress-extra{
+    margin-left: 10px;
+  }
+}

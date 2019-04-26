@@ -1,0 +1,180 @@
+.ui-tag {
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  margin: 2px 4px 2px 0;
+  padding: 0 8px;
+  border: 1px solid #e8eaec;
+  border-radius: 3px;
+  background: #f7f7f7;
+  font-size: 12px;
+  vertical-align: middle;
+  opacity: 1;
+  overflow: hidden;
+  cursor: pointer;
+  &.ui-tag-primary{
+    background: #2d8cf0;
+    border-color: #2d8cf0;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: white;
+    }
+  }
+  &.ui-tag-success{
+    background: #19be6b;
+    border-color: #19be6b;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: white;
+    }
+  }
+  &.ui-tag-wraning{
+    background: #f90;
+    border-color: #f90;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: white;
+    }
+  }
+  &.ui-tag-error{
+    background: #ed4014;
+    border-color: #ed4014;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: white;
+    }
+  }
+  &.ui-tag-blue{
+    background: #e6f7ff;
+    border-color: #91d5ff;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #1890ff;
+    }
+  }
+  &.ui-tag-green{
+    background: #f6ffed;
+    border-color: #b7eb8f;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #52c41a;
+    }
+  }
+  &.ui-tag-red{
+    background: #fff1f0;
+    border-color: #ffa39e;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #f5222d;
+    }
+  }
+  &.ui-tag-yellow{
+    background: #feffe6;
+    border-color: #fffb8f;
+    .ui-tag-text{
+      color: #fadb14;
+    }
+    .ui-icon-ios-close{
+       color: #fadb14;
+    }
+  }
+  &.ui-tag-pink{
+    background: #fff0f6;
+    border-color: #ffadd2;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #eb2f96;
+    }
+  }
+  &.ui-tag-magenta{
+    background: #fff0f6;
+    border-color: #ffadd2;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #eb2f96;
+    }
+  }
+  &.ui-tag-volcano{
+    background: #fff2e8;
+    border-color: #ffbb96;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #fa541c;
+    }
+  }
+  &.ui-tag-orange{
+    background: #fff7e6;
+    border-color: #ffd591;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #fa8c16;
+    }
+  }
+  &.ui-tag-gold{
+    background: #fffbe6;
+    border-color: #ffe58f;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #faad14;
+    }
+  }
+  &.ui-tag-lime{
+    background: #fcffe6;
+    border-color: #eaff8f;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #a0d911;
+    }
+  }
+  &.ui-tag-cyan{
+    background: #e6fffb;
+    border-color: #87e8de;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #13c2c2;
+    }
+  }
+  &.ui-tag-geekblue{
+    background: #f0f5ff;
+    border-color: #adc6ff;
+    .ui-tag-text,.ui-icon-ios-close{
+      color: #2f54eb;
+    }
+  }
+  &.ui-tag-purple{
+    background: #f9f0ff;
+    border-color: #d3adf7;
+    .ui-tag-text{
+      color: #722ed1;
+    }
+    .ui-icon-ios-close{
+      color: #722ed1;
+    }
+  }
+  &.ui-tag-border{
+    background-color: transparent;
+    &.ui-tag-success{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #19be6b;
+      }
+    }
+    &.ui-tag-warning{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #f90;
+      }
+    }
+    &.ui-tag-error{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: #ed4014;
+      }
+    }
+    &.ui-tag-primary{
+      .ui-tag-text,.ui-icon-ios-close{
+        color: white;
+      }
+    }
+  }
+  .ui-tag-text {
+    color: #515a6e;
+  }
+  .ui-icon-ios-close{
+    display: inline-block;
+    font-size: 14px;
+    transform: scale(1.42857143) rotate(0);
+    cursor: pointer;
+    margin-left: 2px;
+    color: #666;
+    opacity: .66;
+    position: relative;
+    top: -1px;
+  }
+  .ui-tag-color-white{
+    color: #fff;
+  }
+}
